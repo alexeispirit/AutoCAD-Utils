@@ -25,15 +25,24 @@
   (list "Ks_ShapeRefDictionary" "Ks_DetailStyleDictionary" "Ks_XRecordDictionary" "Ks_GroupDataDictionary"))
 
 ;;; <LISPDOC>
+;;; <SUBR>(prosteel-check)</SUBR>
+;;; <DESC>Check is there any prosteel dictionaries in drawing database</DESC>
+;;; <RET>T or nil</RET>
+;;; </LISPDOC>
+(defun prosteel-check (/ result)
+  (vlax-for dict (acad-dicts (acad-actdoc))
+    (if (vlax-property-available-p dict 'Name)
+      (if (member (vlax-get dict 'Name) (prosteel-dicts))
+	(setq result T))))
+  result)
+
+;;; <LISPDOC>
 ;;; <SUBR>(prosteel-remove-dicts)</SUBR>
 ;;; <DESC>Remove all prosteel dictionaries (proxy-objects)</DESC>
 ;;; <RET>nil</RET>
 ;;; </LISPDOC>
 (defun prosteel-remove-dicts ( / dict)
   (vlax-for dict (acad-dicts (acad-actdoc))
-    (if (vlax-property-available-p dict 'name)
-      (if (member (vla-get-name dict) (prosteel-dicts))
+    (if (vlax-property-available-p dict 'Name)
+      (if (member (vlax-get dict 'Name) (prosteel-dicts))
 	(vla-delete dict)))))
-
-
-
