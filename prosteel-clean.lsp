@@ -48,7 +48,7 @@
 
 ;;; <LISPDOC>
 ;;; <SUBR>(prosteel-remove-dicts-vl)</SUBR>
-;;; <DESC>Remove all prosteel dictionaries (proxy-objects)</DESC>
+;;; <DESC>Remove all prosteel dictionaries using vla-delete (proxy-objects)</DESC>
 ;;; <RET>nil</RET>
 ;;; </LISPDOC>
 (defun prosteel-remove-dicts-vl ( / dict)
@@ -57,8 +57,14 @@
       (if (member (vlax-get dict 'Name) (prosteel-dicts))
         (vla-delete dict)))))
 
+;;; <LISPDOC>
+;;; <SUBR>(prosteel-remove-dicts-ent)</SUBR>
+;;; <DESC>Remove all prosteel dictionaries using dictremove (proxy-objects)</DESC>
+;;; <RET>nil</RET>
+;;; </LISPDOC>
 (defun prosteel-remove-dicts-ent ( / dict)
   (foreach dict (prosteel-dicts)
-    (dictremove (namedobjdict) dict)))
+    (dictremove (namedobjdict) dict))
+  nil)
 
 
