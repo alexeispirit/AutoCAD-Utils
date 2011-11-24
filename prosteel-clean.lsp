@@ -1,3 +1,4 @@
+(vl-load-com)
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-actdoc)</SUBR>
 ;;; <DESC>AutoCAD.Application.ActiveDocument pointer</DESC>
@@ -16,13 +17,22 @@
   (if actdoc
     (vla-get-dictionaries actdoc)))
 
+(defun acad-dicts-list (dicts / lst)
+  (vlax-for dict dicts
+    (if (vlax-property-available-p dict 'Name)
+      (setq lst (append (list (vlax-get dict 'Name)) lst))))
+  lst)
+
+(defun dicts-list ()
+  (acad-dicts-list (acad-dicts (acad-actdoc))))
+
 ;;; <LISPDOC>
 ;;; <SUBR>(prosteel-dicts)</SUBR>
 ;;; <DESC>Prosteel dictionaries names</DESC>
 ;;; <RET>List of Bentley Prosteel/Structural dictionaries</RET>
 ;;; </LISPDOC>
 (defun prosteel-dicts ( / )
-  (list "Ks_ShapeRefDictionary" "Ks_DetailStyleDictionary" "Ks_XRecordDictionary" "Ks_GroupDataDictionary"))
+  (list "Ks_DetailStyleDictionary" "Ks_GroupDataDictionary" "Ks_ShapeRefDictionary" "Ks_XRecordDictionary"))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(prosteel-check)</SUBR>
@@ -37,12 +47,18 @@
   result)
 
 ;;; <LISPDOC>
-;;; <SUBR>(prosteel-remove-dicts)</SUBR>
+;;; <SUBR>(prosteel-remove-dicts-vl)</SUBR>
 ;;; <DESC>Remove all prosteel dictionaries (proxy-objects)</DESC>
 ;;; <RET>nil</RET>
 ;;; </LISPDOC>
-(defun prosteel-remove-dicts ( / dict)
+(defun prosteel-remove-dicts-vl ( / dict)
   (vlax-for dict (acad-dicts (acad-actdoc))
     (if (vlax-property-available-p dict 'Name)
       (if (member (vlax-get dict 'Name) (prosteel-dicts))
-	(vla-delete dict)))))
+        (vla-delete dict)))))
+
+(defun prosteel-remove-dicts-ent ( / dict)
+  (foreach dict (prosteel-dicts)
+    (dictremove (namedobjdict) dict)))
+
+
