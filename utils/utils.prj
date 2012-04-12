@@ -1,0 +1,20 @@
+;;; VLisp project file [V2.0] utils saved to:[D:/acadext/utils] at:[3/29/12] 
+(vlisp-project-list
+  :name
+  utils
+  :own-list
+  ("utils" "utils-acad"		"utils-regexp"
+	   "utils-string"	"utils-list"
+	   "utils-system"	"utils-file"
+	   "utils-sql"		"utils-projectwise"
+	  )
+  :fas-directory
+  nil
+  :tmp-directory
+  nil
+  :project-keys
+  (:build (:standard))
+  :context-id
+  :autolisp
+)
+;;; EOF
