@@ -1,6 +1,4 @@
-## Small AutoCAD Utils
-
-## UTILS Project
+## AutocAD Utils Project
 
 ### utils/utils.lsp
 	loader file
