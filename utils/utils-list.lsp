@@ -26,6 +26,9 @@
     (cons (car lst) (list-remove-duplicates (vl-remove (car lst) lst)))))
 
 ;;; <LISPDOC>
+;;; <
+
+;;; <LISPDOC>
 ;;; <SUBR>(list-union list1 list2)</SUBR>
 ;;; <DESC>Union list function</DESC>
 ;;; <ARG>list1, list2 - lists to union</ARG>
@@ -76,3 +79,56 @@
 (defun list-xrange (xfirst xlast xstep)
   (if (< xfirst xlast)
     (cons xfirst (list-xrange (+ xfirst xstep) xlast xstep))))
+
+;;; <LISPDOC>
+;;; <SUBR>(list-cdrr lst)</SUBR>
+;;; <DESC>Acts like (cdr) but removes all repeating members from beginning</DESC>
+;;; <ARG>lst - list to cdrr</ARG>
+;;; <RET>list without first n elements</RET>
+;;; </LISPDOC>
+(defun list-cdrr (lst / )
+  (if lst
+    (cond
+      ((= (car lst) (cadr lst))
+	  (list-cdrr (cdr lst)))
+      (t (cdr lst)))))
+
+;;; <LISPDOC>
+;;; <SUBR>(list-remove-repeats lst)</SUBR>
+;;; <DESC>Removes repeating in a row members of the list</DESC>
+;;; <ARG>lst - lst to remove items</ARG>
+;;; <RET>lst without repeating members</RET>
+;;; </LISPDOC>
+(defun list-remove-repeats (lst /)
+  (if lst
+    (cons
+      (car lst)
+      (list-remove-repeats (list-cdrr lst)))))
+
+;;; <LISPDOC>
+;;; <SUBR>(list-cdrr-prs lst prs)</SUBR>
+;;; <DESC>Acts like (cdr) but removes all repeating members from beginning with presision</DESC>
+;;; <ARG>lst - list to cdrr</ARG>
+;;; <ARG>prs - presision</ARG>
+;;; <RET>list without first n elements</RET>
+;;; </LISPDOC>
+(defun list-cdrr-prs (lst prs / )
+  (if lst
+    (cond
+      ((equal (car lst) (cadr lst) prs)
+	  (list-cdrr-prs (cdr lst) prs))
+      (t (cdr lst)))))
+
+;;; <LISPDOC>
+;;; <SUBR>(list-remove-repeats-prs lst prs)</SUBR>
+;;; <DESC>Removes repeating in a row members of the list with presision</DESC>
+;;; <ARG>lst - lst to remove items</ARG>
+;;; <ARG>prs - presision</ARG>
+;;; <RET>lst without repeating members</RET>
+;;; </LISPDOC>
+(defun list-remove-repeats-prs (lst prs /)
+  (if lst
+    (cons
+      (car lst)
+      (list-remove-repeats-prs (list-cdrr-prs lst prs) prs))))
+
