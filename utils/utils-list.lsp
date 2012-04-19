@@ -8,7 +8,7 @@
 (defun list-join-to-string (strlist splitter)
   (if strlist
     (strcat
-      (car strlist)
+      (vl-princ-to-string (car strlist))
       (if (< 0 (length (cdr strlist)))
 	splitter
 	"")
