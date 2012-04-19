@@ -132,3 +132,15 @@
       (car lst)
       (list-remove-repeats-prs (list-cdrr-prs lst prs) prs))))
 
+
+;;; <LISPDOC>
+;;; <SUBR>(list-massoc key lst)</SUBR>
+;;; <DESC>Multiple list assoc</DESC>
+;;; <ARG>key - key to assoc</ARG>
+;;; <ARG>lst - lst to assoc key</ARG>
+;;; <RET>list of found items</RET>
+;;; </LISPDOC>
+(defun list-massoc (key lst)
+  (if lst
+    (mapcar 'cdr (vl-remove-if-not '(lambda (x) (eq key (car x))) lst))))
+  
