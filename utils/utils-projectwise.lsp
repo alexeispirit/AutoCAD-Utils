@@ -1,3 +1,8 @@
+;;; <LISPDOC>
+;;; <SUBR>(projectwise-urn)</SUBR>
+;;; <DESC>Retrives projectwise document URN</DESC>
+;;; <RET>URN string</RET>
+;;; </LISPDOC>
 (defun projectwise-urn (/ finfo cfg cstring login pwd connect query urn)
   (if (file-from-projectwise (setq finfo (file-info)))
     (progn
@@ -30,6 +35,13 @@
       (file-read-value "PW-URN-ENDS-WITH" cfg))
     nil))
 
+;;; <LISPDOC>
+;;; <SUBR>(projectwise-attach-urn-qrcode)</SUBR>
+;;; <DESC>Attaches QRencoded document URN image to drawing</DESC>
+;;; <ARG>urn - URN string to encode</ARG>
+;;; <ARG>point - point to insert image</ARG>
+;;; <RET>nil</RET>
+;;; </LISPDOC>
 (defun projectwise-attach-urn-qrcode (urn point / path ps)
   (setq path (file-qrcode-generate urn))
   (setq ps (vla-get-paperspace (vla-get-activedocument (vlax-get-acad-object))))
