@@ -143,4 +143,16 @@
 (defun list-massoc (key lst)
   (if lst
     (mapcar 'cdr (vl-remove-if-not '(lambda (x) (eq key (car x))) lst))))
-  
+
+;;; <LISPDOC>
+;;; <SUBR>(list-flatten lst)</SUBR>
+;;; <DESC>Flatten any list</DESC>
+;;; <ARG>lst - list to flatten</ARG>
+;;; <RET>One level list</RET>
+;;; </LISPDOC>
+(defun list-flatten (lst /)
+  (if lst
+    (cond
+      ((atom (car lst))
+       (cons (car lst) (list-flatten (cdr lst))))
+      (t (append (list-flatten (car lst)) (list-flatten (cdr lst)))))))
