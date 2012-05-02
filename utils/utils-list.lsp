@@ -107,7 +107,7 @@
 
 ;;; <LISPDOC>
 ;;; <SUBR>(list-cdrr-prs lst prs)</SUBR>
-;;; <DESC>Acts like (cdr) but removes all repeating members from beginning with presision</DESC>
+;;; <DESC>Acts like (cdr) but removes all repeating members from beginning with precision</DESC>
 ;;; <ARG>lst - list to cdrr</ARG>
 ;;; <ARG>prs - presision</ARG>
 ;;; <RET>list without first n elements</RET>
@@ -121,7 +121,7 @@
 
 ;;; <LISPDOC>
 ;;; <SUBR>(list-remove-repeats-prs lst prs)</SUBR>
-;;; <DESC>Removes repeating in a row members of the list with presision</DESC>
+;;; <DESC>Removes repeating in a row members of the list with precision</DESC>
 ;;; <ARG>lst - lst to remove items</ARG>
 ;;; <ARG>prs - presision</ARG>
 ;;; <RET>lst without repeating members</RET>
