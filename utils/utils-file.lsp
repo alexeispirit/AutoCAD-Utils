@@ -66,11 +66,17 @@
 (defun file-read-value (key config / )
   (cdr (assoc key config)))
 
+;;; <LISPDOC>
+;;; <SUBR>(file-qrcode-generate string)</SUBR>
+;;; <DESC>Generates QRcode from string</DESC>
+;;; <ARG>string - string to encode</ARG>
+;;; <RET>path to QRcode image</RET>
+;;; </LISPDOC>
 (defun file-qrcode-generate (string / fname)
   (dos_execute
     (strcat
       "qrcode.exe -o "
-      (setq fname (vl-filename-mktemp "qr-" "D:\\temp" ".png"))
+      (setq fname (vl-filename-mktemp "qr-" (getenv "TEMP") ".png"))
       " -s 10 "
       string)
     3)
