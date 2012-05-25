@@ -81,3 +81,26 @@
       string)
     3)
   fname)
+
+;;; <LISPDOC>
+;;; <SUBR>file-join-path (lst)</SUBR>
+;;; <DESC>Builds path to file from list</DESC>
+;;; <ARG>lst - file path list</ARG>
+;;; <RET>string path to file</RET>
+;;; </LISPDOC>
+(defun file-join-path (lst / out)
+  (setq out (list-flatten (list (car lst) (mapcar (function (lambda (x) (string-trim-symbols "\\\\" x))) (cdr lst)))))
+  (list-join-to-string out "\\"))
+
+;;; <LISPDOC>
+;;; <SUBR>file-load-directory (lst)</SUBR>
+;;; <DESC>Loads all files from directory</DESC>
+;;; <ARG>dir - directory to load</ARG>
+;;; <RET>void</RET>
+;;; </LISPDOC>
+(defun file-load-directory (dir)
+  (if (findfile dir)
+    (foreach file (vl-directory-files dir "*.lsp" 0)
+      (if (vl-file-directory-p file)
+	(file-load-directory (file-join-path (list dir file)))
+	(load (file-join-path (list dir file)) "Not found")))))

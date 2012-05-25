@@ -148,9 +148,23 @@
 ;;; <SUBR>string-regexp-replace-fast (pattern replacer str)</SUBR>
 ;;; <DESC>Replace regexp pattern with string. Autoregister application</DESC>
 ;;; <ARG>pattern - regexp pattern</ARG>
-;;; <ARG>replacer - string replacement
+;;; <ARG>replacer - string replacement</ARG>
 ;;; <ARG>str - string to search in</ARG>
-;;; <RET>item index or nil</RET>
+;;; <RET>new string</RET>
 ;;; </LISPDOC>
 (defun string-regexp-replace-fast (pattern replacer str)
   (regexp-replace (regexp-regapp) pattern replacer str T nil))
+
+;;; <LISPDOC>
+;;; <SUBR>string-trim-symbols (pattern str)</SUBR>
+;;; <DESC>Trim symbols from string. Autoregister application</DESC>
+;;; <ARG>pattern - regexp pattern</ARG>
+;;; <ARG>str - string to search in</ARG>
+;;; <RET>new string</RET>
+;;; </LISPDOC>
+(defun string-trim-symbols (pattern str)
+  (if str
+    (regexp-replace (regexp-regapp) (strcat "^" pattern) ""
+      (regexp-replace (regexp-regapp) (strcat pattern "$") "" str T nil)
+      T nil)))
+    
