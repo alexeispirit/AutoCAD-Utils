@@ -7,7 +7,8 @@
 	 "utils-file.lsp"
 	 "utils-sql.lsp"
 	 "utils-projectwise.lsp"
-	 "acad-utils"))
+	 "utils-acad.lsp"
+	 "utils-date.lsp"))
 
 (foreach loading *utils_load_order*
   (load loading))
