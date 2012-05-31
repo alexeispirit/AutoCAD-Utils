@@ -8,7 +8,8 @@
 	 "utils-sql.lsp"
 	 "utils-projectwise.lsp"
 	 "utils-acad.lsp"
-	 "utils-date.lsp"))
+	 "utils-date.lsp"
+	 "utils-userinput"))
 
 (foreach loading *utils_load_order*
   (load loading))
