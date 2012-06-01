@@ -1,4 +1,12 @@
 ;;; <LISPDOC>
+;;; <SUBR>(acad-version)</SUBR>
+;;; <DESC>Retrives autocad version as float</DESC>
+;;; <RET>Float AutoCAD version number</RET>
+;;; </LISPDOC>
+(defun acad-version ()
+  (atof (substr (getvar "ACADVER") 1 4)))
+
+;;; <LISPDOC>
 ;;; <SUBR>(acad-object)</SUBR>
 ;;; <DESC>Get AutoCAD.Application object pointer</DESC>
 ;;; <RET>AutoCAD.Application pointer</RET>
