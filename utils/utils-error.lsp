@@ -3,7 +3,7 @@
 ;;;<DESC>Error trap subroutine \
 ;;; like try-catch-finally \
 ;;; syntax: \
-;;; (try \
+;;; (error-try \
 ;;; 	'(lambda () subroutines to execute) \
 ;;;	'(lambda (ex) subroutines to process errors) \
 ;;;	'(lambda () subroutines to execute anyway))</DESC>
