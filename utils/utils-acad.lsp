@@ -224,3 +224,28 @@
 	((= -3 lw)
 	 (setq lw 25))
 	(t lw)))))
+
+;;;<LISPDOC>
+;;;<SUBR>(acad-get-objectid vlent)</SUBR>
+;;;<DESC>Get ObjectId inspite of system bit</DESC>
+;;;<ARG>vla-object</ARG>
+;;;<RET>ObjectID</RET>
+;;;</LISPDOC>
+(defun acad-get-objectid (vlent / prop)
+  (if (= (type vlent) 'VLA-OBJECT)
+    (vlax-get-property vlent
+      (strcat "ObjectId"
+	      (if (system-is-x64) "32" "")))))
+
+;;;<LISPDOC<
+;;;<SUBR>(acad-objectidtoobject doc id)</SUBR>
+;;;<DESC>Get object by ObjectId</DESC>
+;;;<ARG>doc - AutoCAD.Application.Document pointer</ARG>
+;;;<ARG>id - objectId</ARG>
+;;;<RET>vla-object</RET>
+;;;</LISPDOC>
+(defun acad-objectidtoobject (doc id)
+  (vlax-invoke doc
+    (strcat "ObjectIDToObject"
+	    (if (system-is-x64) "32" ""))
+    id))
