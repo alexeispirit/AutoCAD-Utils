@@ -226,7 +226,7 @@
 	(t lw)))))
 
 ;;;<LISPDOC>
-;;;<SUBR>(acad-get-objectid vlent)</SUBR>
+;;;<SUBR>(acad-objectid vlent)</SUBR>
 ;;;<DESC>Get ObjectId inspite of system bit</DESC>
 ;;;<ARG>vla-object</ARG>
 ;;;<RET>ObjectID</RET>
@@ -237,7 +237,19 @@
       (strcat "ObjectId"
 	      (if (system-is-x64) "32" "")))))
 
-;;;<LISPDOC<
+;;;<LISPDOC>
+;;;<SUBR>(acad-ownerid vlent)</SUBR>
+;;;<DESC>Get OwnerId inspite of system bit</DESC>
+;;;<ARG>vla-object</ARG>
+;;;<RET>OwnerID</RET>
+;;;</LISPDOC>
+(defun acad-get-ownerid (vlent / prop)
+  (if (= (type vlent) 'VLA-OBJECT)
+    (vlax-get-property vlent
+      (strcat "OwnerId"
+	      (if (system-is-x64) "32" "")))))
+
+;;;<LISPDOC>
 ;;;<SUBR>(acad-objectidtoobject doc id)</SUBR>
 ;;;<DESC>Get object by ObjectId</DESC>
 ;;;<ARG>doc - AutoCAD.Application.Document pointer</ARG>
