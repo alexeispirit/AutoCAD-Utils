@@ -231,7 +231,7 @@
 ;;;<ARG>vla-object</ARG>
 ;;;<RET>ObjectID</RET>
 ;;;</LISPDOC>
-(defun acad-get-objectid (vlent / prop)
+(defun acad-objectid (vlent / prop)
   (if (= (type vlent) 'VLA-OBJECT)
     (vlax-get-property vlent
       (strcat "ObjectId"
@@ -243,7 +243,7 @@
 ;;;<ARG>vla-object</ARG>
 ;;;<RET>OwnerID</RET>
 ;;;</LISPDOC>
-(defun acad-get-ownerid (vlent / prop)
+(defun acad-ownerid (vlent / prop)
   (if (= (type vlent) 'VLA-OBJECT)
     (vlax-get-property vlent
       (strcat "OwnerId"
