@@ -104,3 +104,16 @@
       (if (vl-file-directory-p file)
 	(file-load-directory (file-join-path (list dir file)))
 	(load (file-join-path (list dir file)) "Not found")))))
+
+;;; <LISPDOC>
+;;; <SUBR>(file-netload filename)</SUBR>
+;;; <DESC>Load .Net assembly into autocad</DESC>
+;;; <ARG>filename - path to dll file</ARG>
+;;; <RET>T or nil</RET>
+;;; </LISPDOC>
+(defun file-netload (filename)
+  (if (findfile filename)
+    (progn
+      (vl-cmdf "_netload" filename)
+      T)
+    nil))
