@@ -77,8 +77,8 @@
 (defun acad-ent2vla (entity)
   (vlax-ename->vla-object entity))
 
-;;; <LISPDIC>
-;;; <SUBR>(acad-select-objects etype)</SUBR>
+;;; <LISPDOC>
+;;; <SUBR>(acad-selset-onscreen etype)</SUBR>
 ;;; <DESC>Select objects on screen</DESC>
 ;;; <ARG>etype - type of entities</ARG>
 ;;; <RET>VLA Selection Set</RET>
@@ -89,6 +89,17 @@
     (vlax-safearray-fill (vlax-make-safearray vlax-vbinteger '(0 . 0)) '(0))
     (vlax-safearray-fill (vlax-make-safearray vlax-vbvariant '(0 . 0)) (list etype)))
   sel)
+
+;;; <LISPDOC>
+;;; <SUBR>(acad-selset-universal</SUBR>
+;;; <DESC>Create selection set \
+;;; with user prompt or selected objects</DESC>
+;;; <RET>Selection Set</RET>
+;;; </LISPDOC>
+(defun acad-selset-universal ( / selset)
+  (if (not (setq selset (cadr (ssgetfirst))))
+    (setq selset (ssget)))
+  selset)
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-ent-boundingbox entity)</SUBR>
