@@ -44,6 +44,20 @@
     (vla-get-modelspace doc)
     (vla-get-modelspace (acad-actdoc))))
 
+
+;;; <LISPDOC>
+;;; <SUBR>(acad-currentspace doc)</SUBR>
+;;; <DESC>Get CurrentSpace pointer</DESC>
+;;; <ARG>doc - activedocument pointer (auto if nil)</ARG>
+;;; <RET>Current Paper or Model space pointer</RET>
+;;; </LISPDOC>
+(defun acad-currentspace (doc /)
+  (if (not doc)
+    (setq doc (acad-actdoc)))
+  (if (= (getvar "TILEMODE") 1)
+    (acad-modelspace doc)
+    (acad-paperspace doc)))
+
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-dump)</SUBR>
 ;;; <DESC>Dump vla-object</DESC>
