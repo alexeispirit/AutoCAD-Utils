@@ -9,8 +9,10 @@
 	 "utils-projectwise.lsp"
 	 "utils-acad.lsp"
 	 "utils-date.lsp"
-	 "utils-userinput"
-	 "utils-error"))
+	 "utils-userinput.lsp"
+	 "utils-error.lsp"
+	 "utils-reactor.lsp"
+	 "utils-math.lsp"))
 
 (foreach loading *utils_load_order*
   (load loading))

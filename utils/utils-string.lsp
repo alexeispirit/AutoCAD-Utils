@@ -145,6 +145,19 @@
   (vl-string-search item str))
 
 ;;; <LISPDOC>
+;;; <SUBR>(string-contains str template)</SUBR>
+;;; <DESC>Check if string contains template</DESC>
+;;; <ARG>str - string to search in</ARG>
+;;; <ARG>template - template to search</ARG>
+;;; <RET>T or nil</RET>
+;;; </LISPDOC>
+(defun string-contains (str template)
+  (if (and
+	(= (type str) 'STR)
+	(= (type template) 'STR))
+    (wcmatch str (strcat "*" template "*"))))  
+  
+;;; <LISPDOC>
 ;;; <SUBR>string-regexp-replace-fast (pattern replacer str)</SUBR>
 ;;; <DESC>Replace regexp pattern with string. Autoregister application</DESC>
 ;;; <ARG>pattern - regexp pattern</ARG>

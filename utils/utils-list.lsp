@@ -156,3 +156,32 @@
       ((atom (car lst))
        (cons (car lst) (list-flatten (cdr lst))))
       (t (append (list-flatten (car lst)) (list-flatten (cdr lst)))))))
+
+;;; <LISPDOC>
+;;; <SUBR>(list-slice lst firsti lasti)</SUBR>
+;;; <DESC>Slice list between elements</DESC>
+;;; <ARG>lst - list to slice</ARG>
+;;; <ARG>firsti - start index</ARG>
+;;; <ARG>lasti - finish index</ARG>
+;;; <RET>Sliced list</RET>
+;;; </LISPDOC>
+(defun list-slice (lst firsti lasti / new_lst i)
+  (if (<= (1+ firsti) (1+ lasti) (length lst))
+    (while (<= firsti lasti)
+      (setq new_lst (append new_lst (list(nth firsti lst)))
+	    firsti (1+ firsti))))
+  new_lst)	  
+
+;;; <LISPDOC>
+;;; <SUBR>(list-insert-at lst el index)</SUBR>
+;;; <DESC>Insert element at index position</DESC>
+;;; <ARG>lst - list to insert element</ARG>
+;;; <ARG>el - element to insert</ARG>
+;;; <ARG>index - position of element</ARG>
+;;; <RET>new list</RET>
+;;; </LISPDOC>
+(defun list-insert-at (lst el index)
+  (append
+    (list-slice lst 0 (1- index))
+    (list el)
+    (list-slice lst index (1- (length lst))))) 
