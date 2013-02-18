@@ -12,7 +12,9 @@
 	 "utils-userinput.lsp"
 	 "utils-error.lsp"
 	 "utils-reactor.lsp"
-	 "utils-math.lsp"))
+	 "utils-math.lsp"
+	 "utils-linetype.lsp"
+	 "utils-editor.lsp"))
 
 (foreach loading *utils_load_order*
   (load loading))
