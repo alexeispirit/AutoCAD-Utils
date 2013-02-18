@@ -5,4 +5,5 @@
 ;;; <RET>Nothing</RET>
 ;;; </LISPDOC>
 (defun editor-say (what)
-  (princ (strcat (vl-princ-to-string what)"\n")))
+  (princ (strcat (vl-princ-to-string what)"\n"))
+  (princ))
