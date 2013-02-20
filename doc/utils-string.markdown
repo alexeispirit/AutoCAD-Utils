@@ -55,13 +55,13 @@ Check if string contains template
 * str - string to search in
 * template - template to search
 returns: T or nil
-##string-regexp-replace-fast (pattern replacer str)
+##(string-regexp-replace-fast pattern replacer str)
 Replace regexp pattern with string. Autoregister application
 * pattern - regexp pattern
 * replacer - string replacement
 * str - string to search in
 returns: new string
-##string-trim-symbols (pattern str)
+##(string-trim-symbols pattern str)
 Trim symbols from string. Autoregister application
 * pattern - regexp pattern
 * str - string to search in

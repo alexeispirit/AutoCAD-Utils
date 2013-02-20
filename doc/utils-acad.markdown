@@ -75,19 +75,19 @@ returns: List of coordinates
 Get the bottom right corner coordinates
 * clist - coordinates list
 returns: List of coordinates
-##(acad-ent-get-layer ent
+##(acad-ent-get-layer ent)
 Get entity layer
 * ent - ENAME entity
 returns: ENAME layer
-##(acad-ent-get-color ent
+##(acad-ent-get-color ent)
 Get entity color
 * ent - ENAME entity
 returns: INT entity color
-##(acad-ent-get-ltype ent
+##(acad-ent-get-ltype ent)
 Get entity linetype
 * ent - ENAME entity
 returns: STR entity linetype
-##(acad-ent-get-lweight ent
+##(acad-ent-get-lweight ent)
 Get entity lineweight
 * ent - ENAME entity
 returns: INT entity lineweight

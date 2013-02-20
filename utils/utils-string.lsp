@@ -158,7 +158,7 @@
     (wcmatch str (strcat "*" template "*"))))  
   
 ;;; <LISPDOC>
-;;; <SUBR>string-regexp-replace-fast (pattern replacer str)</SUBR>
+;;; <SUBR>(string-regexp-replace-fast pattern replacer str)</SUBR>
 ;;; <DESC>Replace regexp pattern with string. Autoregister application</DESC>
 ;;; <ARG>pattern - regexp pattern</ARG>
 ;;; <ARG>replacer - string replacement</ARG>
@@ -169,7 +169,7 @@
   (regexp-replace (regexp-regapp) pattern replacer str T nil))
 
 ;;; <LISPDOC>
-;;; <SUBR>string-trim-symbols (pattern str)</SUBR>
+;;; <SUBR>(string-trim-symbols pattern str)</SUBR>
 ;;; <DESC>Trim symbols from string. Autoregister application</DESC>
 ;;; <ARG>pattern - regexp pattern</ARG>
 ;;; <ARG>str - string to search in</ARG>

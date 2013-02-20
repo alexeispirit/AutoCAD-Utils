@@ -1,5 +1,5 @@
 ;;;<LISPDOC>
-;;;<SUBR>(error-try test catch finally</SUBR>
+;;;<SUBR>(error-try test catch finally)</SUBR>
 ;;;<DESC>Error trap subroutine \
 ;;; like try-catch-finally \
 ;;; syntax: \

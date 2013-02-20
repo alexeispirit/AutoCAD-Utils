@@ -196,7 +196,7 @@
   (list (caadr clist) (cadar clist) (last (car clist))))
 
 ;;; <LISPDOC>
-;;; <SUBR>(acad-ent-get-layer ent</SUBR>
+;;; <SUBR>(acad-ent-get-layer ent)</SUBR>
 ;;; <DESC>Get entity layer</DESC>
 ;;; <ARG>ent - ENAME entity</ARG>
 ;;; <RET>ENAME layer</RET>
@@ -206,7 +206,7 @@
     (tblobjname "LAYER" (cdr (assoc 8 (entget ent))))))
 
 ;;; <LISPDOC>
-;;; <SUBR>(acad-ent-get-color ent</SUBR>
+;;; <SUBR>(acad-ent-get-color ent)</SUBR>
 ;;; <DESC>Get entity color</DESC>
 ;;; <ARG>ent - ENAME entity</ARG>
 ;;; <RET>INT entity color</RET>
@@ -220,7 +220,7 @@
 	color))))
        
 ;;; <LISPDOC>
-;;; <SUBR>(acad-ent-get-ltype ent</SUBR>
+;;; <SUBR>(acad-ent-get-ltype ent)</SUBR>
 ;;; <DESC>Get entity linetype</DESC>
 ;;; <ARG>ent - ENAME entity</ARG>
 ;;; <RET>STR entity linetype</RET>
@@ -234,7 +234,7 @@
 	lt))))
 
 ;;; <LISPDOC>
-;;; <SUBR>(acad-ent-get-lweight ent</SUBR>
+;;; <SUBR>(acad-ent-get-lweight ent)</SUBR>
 ;;; <DESC>Get entity lineweight</DESC>
 ;;; <ARG>ent - ENAME entity</ARG>
 ;;; <RET>INT entity lineweight</RET>
