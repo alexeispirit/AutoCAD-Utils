@@ -14,7 +14,9 @@
 	 "utils-reactor.lsp"
 	 "utils-math.lsp"
 	 "utils-linetype.lsp"
-	 "utils-editor.lsp"))
+	 "utils-editor.lsp"
+	 "utils-layer.lsp"
+	 "utils-prosteel.lsp"))
 
 (foreach loading *utils_load_order*
   (load loading))
