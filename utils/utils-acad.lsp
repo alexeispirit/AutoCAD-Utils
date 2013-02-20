@@ -105,7 +105,7 @@
   sel)
 
 ;;; <LISPDOC>
-;;; <SUBR>(acad-selset-universal</SUBR>
+;;; <SUBR>(acad-selset-universal)</SUBR>
 ;;; <DESC>Create selection set \
 ;;; with user prompt or selected objects</DESC>
 ;;; <RET>Selection Set</RET>

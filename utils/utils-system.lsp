@@ -16,7 +16,7 @@
 
 ;;;<LISPDOC>
 ;;;<SUBR>(system-computer-stp-name pc)</SUBR>
-;;;<DESC>Convert computername into canonical stpname<DESC>
+;;;<DESC>Convert computername into canonical stpname</DESC>
 ;;;<ARG>pc - computername string</ARG>
 ;;;<RET>canonical stp computername</RET>
 ;;;</LISPDOC>

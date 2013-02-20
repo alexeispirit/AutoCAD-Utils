@@ -1,4 +1,10 @@
-(setq *utils_load_order*
+;;; <LISPDOC>
+;;; <SUBR>(utils-load)</SUBR>
+;;; <DESC>Load lisp files in provided order</DESC>
+;;; <RET>Nothing</RET>
+;;; </LISPDOC>  
+(defun utils-load ( / )
+  (setq *utils_load_order*
        (list
 	 "utils-regexp.lsp"
 	 "utils-string.lsp"
@@ -18,5 +24,7 @@
 	 "utils-layer.lsp"
 	 "utils-prosteel.lsp"))
 
-(foreach loading *utils_load_order*
-  (load loading))
+  (foreach loading *utils_load_order*
+    (load loading)))
+
+(utils-load)
