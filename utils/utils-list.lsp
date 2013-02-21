@@ -185,3 +185,22 @@
     (list-slice lst 0 (1- index))
     (list el)
     (list-slice lst index (1- (length lst))))) 
+	
+;;; <LISPDOC>
+;;; <SUBR>(list-dict lst)</SUBR>
+;;; <DESC>Transform list into dict with lists. \
+;;; Example: \
+;;; (list-dict ((2 3) (2 4) (2 5) (1 1) (1 2) (1 3))) \
+;;; ((1 1 2 3) (2 3 4 5))</DESC>
+;;; <ARG>lst - list to transform</ARG>
+;;; <RET>new list</RET>
+;;; </LISPDOC>	
+(defun list-dict (lst / out old)
+  (while lst
+    (setq first (car lst)
+	  lst (cdr lst))
+    (if (not (assoc (car first) out))
+      (setq out (append out (list (list (car first))))))
+    (if (not (member (cadr first) (assoc (car first) out)))
+      (setq out (subst (append (assoc (car first) out) (list (cadr first))) (assoc (car first) out) out))))
+  out)	

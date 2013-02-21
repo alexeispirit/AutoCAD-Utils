@@ -286,3 +286,36 @@
     (strcat "ObjectIDToObject"
 	    (if (system-is-x64) "32" ""))
     id))
+
+;;;<LISPDOC>
+;;;<SUBR>(acad-tablelist-ent table)</SUBR>
+;;;<DESC>Get the entities list of provided acad TABLE</DESC>
+;;;<ARG>table - acad TABLE to search in</ARG>
+;;;<RET>List of TABLE entities</RET>
+;;;</LISPDOC>
+(defun acad-tablelist-ent (table / ent lst)
+  (while (setq ent (tblnext table (null ent)))
+    (setq lst (cons (tblobjname table (cdr (assoc 2 ent))) lst)))
+  (reverse lst))
+
+;;;<LISPDOC>
+;;;<SUBR>(acad-tablelist-name table)</SUBR>
+;;;<DESC>Get the names list of provided acad TABLE</DESC>
+;;;<ARG>table - acad TABLE to search in</ARG>
+;;;<RET>List of TABLE names</RET>
+;;;</LISPDOC>
+(defun acad-tablelist-name (table / ent lst)
+  (while (setq ent (tblnext table (null ent)))
+    (setq lst (cons (cdr (assoc 2 ent)) lst)))
+  (reverse lst))
+
+;;;<LISPDOC>
+;;;<SUBR>(acad-tablelist-cons table)</SUBR>
+;;;<DESC>Get the (name . entity) list of provided acad TABLE</DESC>
+;;;<ARG>table - acad TABLE to search in</ARG>
+;;;<RET>List of TABLE (name . entity)</RET>
+;;;</LISPDOC>
+(defun acad-tablelist-cons (table / ent lst name)
+  (while (setq ent (tblnext table (null ent)))
+    (setq lst (cons (cons (setq name (cdr (assoc 2 ent))) (tblobjname table name)) lst)))
+  (reverse lst))
