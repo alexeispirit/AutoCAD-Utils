@@ -15,5 +15,5 @@
 	  (entmod layer)))
     (setq layer (tblnext "LAYER")))
   (foreach item (list-remove-duplicates xlist)
-    (entdel item))
+    (entdel item)))
   nil)
