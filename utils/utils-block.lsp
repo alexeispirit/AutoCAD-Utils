@@ -1,0 +1,11 @@
+
+(defun block-ref-safe-reset (ent / vlist value)
+  (if (= (type ent) 'ENAME)
+    (setq ent (vlax-ename->vla-object ent)))
+  (foreach item (vlax-invoke ent 'GetDynamicBlockProperties)
+    (setq vlist (cons (cons (vlax-get item 'PropertyName) (vlax-get item 'Value)) vlist)))
+  (vla-resetblock ent)
+  (foreach item (vlax-invoke ent 'GetDynamicBlockProperties)
+    (if (setq value (assoc (vlax-get item 'PropertyName) vlist))
+      (if (= (vlax-get item 'ReadOnly) 0)
+	(vlax-put item 'Value (cdr value))))))

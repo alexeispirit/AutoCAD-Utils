@@ -125,14 +125,29 @@
   str)
 
 ;;; <LISPDOC>
+;;; <SUBR>(string-reverse str)</SUBR>
+;;; <DESC>Reverse string</DESC>
+;;; <ARG>str - string to search in</ARG>
+;;; <RET>reversed string</RET>
+;;; </LISPDOC>
+(defun string-reverse (str)
+  (vl-list->string (reverse (vl-string->list str))))
+    
+;;; <LISPDOC>
 ;;; <SUBR>(string-search-reverse item str)</SUBR>
 ;;; <DESC>Reverse search in string</DESC>
 ;;; <ARG>item - item to look for</ARG>
 ;;; <ARG>str - string to search in</ARG>
 ;;; <RET>item index or nil</RET>
 ;;; </LISPDOC>
-(defun string-search-reverse (item str / )
-  (vl-string-position (ascii item) str 0 T))
+(defun string-search-reverse (search str / index)
+  (setq index (vl-string-search (string-reverse search) (string-reverse str)))
+  (if index
+    (- (strlen str)
+       index
+       (strlen search))
+    nil))
+
 
 ;;; <LISPDOC>
 ;;; <SUBR>(string-search item str)</SUBR>
@@ -145,20 +160,24 @@
   (vl-string-search item str))
 
 ;;; <LISPDOC>
-;;; <SUBR>(string-contains str template)</SUBR>
-;;; <DESC>Check if string contains template</DESC>
+;;; <SUBR>(string-contains search str)</SUBR>
+;;; <DESC>count substrings in string</DESC>
+;;; <ARG>search - item to look for</ARG>
 ;;; <ARG>str - string to search in</ARG>
-;;; <ARG>template - template to search</ARG>
-;;; <RET>T or nil</RET>
+;;; <RET>entry counts or nil</RET>
 ;;; </LISPDOC>
-(defun string-contains (str template)
-  (if (and
-	(= (type str) 'STR)
-	(= (type template) 'STR))
-    (wcmatch str (strcat "*" template "*"))))  
+(defun string-contains (search str / cnt index)
+  (setq cnt 0)
+  (if (= (type str) (type search) 'STR)
+    (while (setq index (vl-string-search search str))
+      (setq str (substr str (+ index (strlen search)) (- (strlen str) index)))
+      (setq cnt (1+ cnt))))
+  (if (/= cnt 0)
+    cnt
+    nil))
   
 ;;; <LISPDOC>
-;;; <SUBR>(string-regexp-replace-fast pattern replacer str)</SUBR>
+;;; <SUBR>string-regexp-replace-fast (pattern replacer str)</SUBR>
 ;;; <DESC>Replace regexp pattern with string. Autoregister application</DESC>
 ;;; <ARG>pattern - regexp pattern</ARG>
 ;;; <ARG>replacer - string replacement</ARG>
@@ -169,7 +188,7 @@
   (regexp-replace (regexp-regapp) pattern replacer str T nil))
 
 ;;; <LISPDOC>
-;;; <SUBR>(string-trim-symbols pattern str)</SUBR>
+;;; <SUBR>string-trim-symbols (pattern str)</SUBR>
 ;;; <DESC>Trim symbols from string. Autoregister application</DESC>
 ;;; <ARG>pattern - regexp pattern</ARG>
 ;;; <ARG>str - string to search in</ARG>
@@ -180,4 +199,31 @@
     (regexp-replace (regexp-regapp) (strcat "^" pattern) ""
       (regexp-replace (regexp-regapp) (strcat pattern "$") "" str T nil)
       T nil)))
-    
+
+;;; <LISPDOC>
+;;; <SUBR>string-regexp-increment (re search str value)</SUBR>
+;;; <DESC>Replace numbers in string with starting value</DESC>
+;;; <ARG>re - regexp object</ARG>
+;;; <ARG>search - regexp pattern</ARG>
+;;; <ARG>str - string to search in</ARG>
+;;; <ARG>value - increment</ARG>
+;;; <RET>new string</RET>
+;;; </LISPDOC>	  
+(defun string-regexp-increment (re search str value / olist nlist)
+  (setq olist (reverse (regexp-execute re search str T nil))
+	nlist (mapcar
+		(function (lambda (x y)
+			    (vl-string-subst (itoa y) (car (regexp-execute-to-plain-list re "\\d+" (car x))) (car x))))
+		olist
+		(list-xrange value (+ (length olist) value) 1)))
+  (setq cnt 0)
+  (while olist
+    (setq cnt (+ (strlen (caar olist)) cnt)
+	  str (vl-string-subst
+		(car nlist)
+		(caar olist)
+		str
+		cnt)
+	  nlist (cdr nlist)
+	  olist (cdr olist)))
+  str)

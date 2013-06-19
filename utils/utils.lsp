@@ -23,7 +23,8 @@
 	 "utils-editor.lsp"
 	 "utils-layer.lsp"
 	 "utils-prosteel.lsp"
-	 "utils-entity.lsp"))
+	 "utils-entity.lsp"
+	 "utils-block.lsp"))
 
   (foreach loading *utils_load_order*
     (load loading)))

@@ -10,8 +10,8 @@
     (strcat
       (vl-princ-to-string (car strlist))
       (if (< 0 (length (cdr strlist)))
-	splitter
-	"")
+	    splitter
+	    "")
       (list-join-to-string (cdr strlist) splitter))
     ""))
 
@@ -185,7 +185,7 @@
     (list-slice lst 0 (1- index))
     (list el)
     (list-slice lst index (1- (length lst))))) 
-	
+
 ;;; <LISPDOC>
 ;;; <SUBR>(list-dict lst)</SUBR>
 ;;; <DESC>Transform list into dict with lists. \

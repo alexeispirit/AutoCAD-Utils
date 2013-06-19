@@ -23,6 +23,14 @@
   (vla-get-activedocument (acad-object)))
 
 ;;; <LISPDOC>
+;;; <SUBR>(acad-dwgname)</SUBR>
+;;; <DESC>Get activedocument drawing name</DESC>
+;;; <RET>Current document name</RET>
+;;; </LISPDOC>
+(defun acad-dwgname ()
+  (vlax-get (acad-actdoc) 'Name))
+
+;;; <LISPDOC>
 ;;; <SUBR>(acad-paperspace doc)</SUBR>
 ;;; <DESC>Get PaperSpace pointer</DESC>
 ;;; <ARG>doc - activedocument pointer (auto if nil)</ARG>
