@@ -1,9 +1,5 @@
-# G:\acadext\AutoCAD-Utils\utils\utils.lsp
-
-## (utils-load)
-
-Load lisp files in provided order
-
-- No arguments
-
-returns: Nothing
+# ../AutoCAD-Utils/utils/utils.lsp
+## (utils-load)
+Load lisp files in provided order. Add utils folder to your Support path
+* No arguments
+returns: Nothing

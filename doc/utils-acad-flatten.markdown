@@ -1,1 +1,1 @@
-# G:\acadext\AutoCAD-Utils\utils\utils-acad-flatten.lsp
+# ../AutoCAD-Utils/utils/utils-acad-flatten.lsp
