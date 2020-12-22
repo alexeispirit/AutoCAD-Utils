@@ -5,13 +5,13 @@
 ;;; <ARG>splitter - delimiter</ARG>
 ;;; <RET>Joined string</RET>
 ;;; </LISPDOC>
-(defun list-join-to-string (strlist splitter)
-  (if strlist
-    (strcat
+(defun list-join-to-string (strlist splitter) 
+  (if strlist 
+    (strcat 
       (vl-princ-to-string (car strlist))
-      (if (< 0 (length (cdr strlist)))
-	    splitter
-	    "")
+      (if (< 0 (length (cdr strlist))) 
+        splitter
+        "")
       (list-join-to-string (cdr strlist) splitter))
     ""))
 
@@ -21,8 +21,8 @@
 ;;; <ARG>lst - list to proceed</ARG>
 ;;; <RET>cleared list</RET>
 ;;; </LISPDOC>
-(defun list-remove-duplicates (lst)
-  (if lst
+(defun list-remove-duplicates (lst) 
+  (if lst 
     (cons (car lst) (list-remove-duplicates (vl-remove (car lst) lst)))))
 
 ;;; <LISPDOC>
@@ -34,11 +34,11 @@
 ;;; <ARG>list1, list2 - lists to union</ARG>
 ;;; <RET>united list</RET>
 ;;; </LISPDOC>
-(defun list-union (list1 list2 / outlist)
+(defun list-union (list1 list2 / outlist) 
   (setq outlist list1)
-    (foreach item2 list2
-      (if (not (vl-position item2 outlist))
-	(setq outlist (append outlist (list item2)))))
+  (foreach item2 list2 
+    (if (not (vl-position item2 outlist)) 
+      (setq outlist (append outlist (list item2)))))
   (vl-sort outlist '<))
 
 ;;; <LISPDOC>
@@ -47,10 +47,10 @@
 ;;; <ARG>list1, list2 - lists to intersect</ARG>
 ;;; <RET>intersected list</RET>
 ;;; </LISPDOC>
-(defun list-intersect (list1 list2 / outlist)
-  (setq outlist (list ))
-  (foreach item2 list2
-    (if (and (vl-position item2 list1) (not (vl-position item2 outlist)))
+(defun list-intersect (list1 list2 / outlist) 
+  (setq outlist (list))
+  (foreach item2 list2 
+    (if (and (vl-position item2 list1) (not (vl-position item2 outlist))) 
       (setq outlist (append outlist (list item2)))))
   (vl-sort outlist '<))
 
@@ -60,10 +60,10 @@
 ;;; <ARG>list1, list2 - lists to substract</ARG>
 ;;; <RET>substracted list</RET>
 ;;; </LISPDOC>
-(defun list-substract (list1 list2 / outlist)
+(defun list-substract (list1 list2 / outlist) 
   (setq outlist list1)
-  (foreach item2 list2
-    (if (vl-position item2 list1)
+  (foreach item2 list2 
+    (if (vl-position item2 list1) 
       (setq outlist (vl-remove item2 outlist))
       (setq outlist (append outlist (list item2)))))
   (vl-sort outlist '<))
@@ -76,8 +76,8 @@
 ;;; <ARG>xstep - range step</ARG>
 ;;; <RET>Range list</RET>
 ;;; </LISPDOC>
-(defun list-xrange (xfirst xlast xstep)
-  (if (< xfirst xlast)
+(defun list-xrange (xfirst xlast xstep) 
+  (if (< xfirst xlast) 
     (cons xfirst (list-xrange (+ xfirst xstep) xlast xstep))))
 
 ;;; <LISPDOC>
@@ -86,11 +86,11 @@
 ;;; <ARG>lst - list to cdrr</ARG>
 ;;; <RET>list without first n elements</RET>
 ;;; </LISPDOC>
-(defun list-cdrr (lst / )
-  (if lst
-    (cond
+(defun list-cdrr (lst /) 
+  (if lst 
+    (cond 
       ((= (car lst) (cadr lst))
-	  (list-cdrr (cdr lst)))
+       (list-cdrr (cdr lst)))
       (t (cdr lst)))))
 
 ;;; <LISPDOC>
@@ -99,9 +99,9 @@
 ;;; <ARG>lst - lst to remove items</ARG>
 ;;; <RET>lst without repeating members</RET>
 ;;; </LISPDOC>
-(defun list-remove-repeats (lst /)
-  (if lst
-    (cons
+(defun list-remove-repeats (lst /) 
+  (if lst 
+    (cons 
       (car lst)
       (list-remove-repeats (list-cdrr lst)))))
 
@@ -112,11 +112,11 @@
 ;;; <ARG>prs - presision</ARG>
 ;;; <RET>list without first n elements</RET>
 ;;; </LISPDOC>
-(defun list-cdrr-prs (lst prs / )
-  (if lst
-    (cond
+(defun list-cdrr-prs (lst prs /) 
+  (if lst 
+    (cond 
       ((equal (car lst) (cadr lst) prs)
-	  (list-cdrr-prs (cdr lst) prs))
+       (list-cdrr-prs (cdr lst) prs))
       (t (cdr lst)))))
 
 ;;; <LISPDOC>
@@ -126,9 +126,9 @@
 ;;; <ARG>prs - presision</ARG>
 ;;; <RET>lst without repeating members</RET>
 ;;; </LISPDOC>
-(defun list-remove-repeats-prs (lst prs /)
-  (if lst
-    (cons
+(defun list-remove-repeats-prs (lst prs /) 
+  (if lst 
+    (cons 
       (car lst)
       (list-remove-repeats-prs (list-cdrr-prs lst prs) prs))))
 
@@ -140,8 +140,8 @@
 ;;; <ARG>lst - lst to assoc key</ARG>
 ;;; <RET>list of found items</RET>
 ;;; </LISPDOC>
-(defun list-massoc (key lst)
-  (if lst
+(defun list-massoc (key lst) 
+  (if lst 
     (mapcar 'cdr (vl-remove-if-not '(lambda (x) (eq key (car x))) lst))))
 
 ;;; <LISPDOC>
@@ -150,9 +150,9 @@
 ;;; <ARG>lst - list to flatten</ARG>
 ;;; <RET>One level list</RET>
 ;;; </LISPDOC>
-(defun list-flatten (lst /)
-  (if lst
-    (cond
+(defun list-flatten (lst /) 
+  (if lst 
+    (cond 
       ((atom (car lst))
        (cons (car lst) (list-flatten (cdr lst))))
       (t (append (list-flatten (car lst)) (list-flatten (cdr lst)))))))
@@ -165,11 +165,11 @@
 ;;; <ARG>lasti - finish index</ARG>
 ;;; <RET>Sliced list</RET>
 ;;; </LISPDOC>
-(defun list-slice (lst firsti lasti / new_lst i)
-  (if (<= (1+ firsti) (1+ lasti) (length lst))
-    (while (<= firsti lasti)
-      (setq new_lst (append new_lst (list(nth firsti lst)))
-	    firsti (1+ firsti))))
+(defun list-slice (lst firsti lasti / new_lst i) 
+  (if (<= (1+ firsti) (1+ lasti) (length lst)) 
+    (while (<= firsti lasti) 
+      (setq new_lst (append new_lst (list (nth firsti lst)))
+            firsti  (1+ firsti))))
   new_lst)	  
 
 ;;; <LISPDOC>
@@ -180,8 +180,8 @@
 ;;; <ARG>index - position of element</ARG>
 ;;; <RET>new list</RET>
 ;;; </LISPDOC>
-(defun list-insert-at (lst el index)
-  (append
+(defun list-insert-at (lst el index) 
+  (append 
     (list-slice lst 0 (1- index))
     (list el)
     (list-slice lst index (1- (length lst))))) 
@@ -195,12 +195,14 @@
 ;;; <ARG>lst - list to transform</ARG>
 ;;; <RET>new list</RET>
 ;;; </LISPDOC>	
-(defun list-dict (lst / out old)
-  (while lst
+(defun list-dict (lst / out old) 
+  (while lst 
     (setq first (car lst)
-	  lst (cdr lst))
-    (if (not (assoc (car first) out))
+          lst   (cdr lst))
+    (if (not (assoc (car first) out)) 
       (setq out (append out (list (list (car first))))))
-    (if (not (member (cadr first) (assoc (car first) out)))
-      (setq out (subst (append (assoc (car first) out) (list (cadr first))) (assoc (car first) out) out))))
+    (if (not (member (cadr first) (assoc (car first) out))) 
+      (setq out (subst (append (assoc (car first) out) (list (cadr first))) 
+                       (assoc (car first) out)
+                       out))))
   out)	

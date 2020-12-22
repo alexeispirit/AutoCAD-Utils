@@ -4,8 +4,7 @@
 ;;; <RET>Float AutoCAD version number</RET>
 ;;; </LISPDOC>
 (defun acad-version () 
-  (atof (substr (getvar "ACADVER") 1 4))
-)
+  (atof (substr (getvar "ACADVER") 1 4)))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-object)</SUBR>
@@ -13,8 +12,7 @@
 ;;; <RET>AutoCAD.Application pointer</RET>
 ;;; </LISPDOC>
 (defun acad-object () 
-  (vlax-get-acad-object)
-)
+  (vlax-get-acad-object))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-actdoc)</SUBR>
@@ -22,8 +20,7 @@
 ;;; <RET>ActiveDocument pointer</RET>
 ;;; </LISPDOC>
 (defun acad-actdoc () 
-  (vla-get-activedocument (acad-object))
-)
+  (vla-get-activedocument (acad-object)))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-dwgname)</SUBR>
@@ -31,8 +28,7 @@
 ;;; <RET>Current document name</RET>
 ;;; </LISPDOC>
 (defun acad-dwgname () 
-  (vlax-get (acad-actdoc) 'Name)
-)
+  (vlax-get (acad-actdoc) 'Name))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-paperspace doc)</SUBR>
@@ -43,9 +39,7 @@
 (defun acad-paperspace (doc) 
   (if doc 
     (vla-get-paperspace doc)
-    (vla-get-paperspace (acad-actdoc))
-  )
-)
+    (vla-get-paperspace (acad-actdoc))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-modelspace doc)</SUBR>
@@ -56,9 +50,7 @@
 (defun acad-modelspace (doc) 
   (if doc 
     (vla-get-modelspace doc)
-    (vla-get-modelspace (acad-actdoc))
-  )
-)
+    (vla-get-modelspace (acad-actdoc))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-currentspace doc)</SUBR>
@@ -68,13 +60,10 @@
 ;;; </LISPDOC>
 (defun acad-currentspace (doc /) 
   (if (not doc) 
-    (setq doc (acad-actdoc))
-  )
+    (setq doc (acad-actdoc)))
   (if (= (getvar "TILEMODE") 1) 
     (acad-modelspace doc)
-    (acad-paperspace doc)
-  )
-)
+    (acad-paperspace doc)))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-actlayout-name doc)</SUBR>
@@ -84,10 +73,8 @@
 ;;; </LISPDOC>
 (defun acad-actlayout-name (doc) 
   (if (not doc) 
-    (setq doc (acad-actdoc))
-  )
-  (vlax-get (vla-get-activelayout doc) 'Name)
-)
+    (setq doc (acad-actdoc)))
+  (vlax-get (vla-get-activelayout doc) 'Name))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-dump)</SUBR>
@@ -95,8 +82,7 @@
 ;;; <RET>nil</RET>
 ;;; </LISPDOC>
 (defun acad-dump (vla_object) 
-  (vlax-dump-object vla_object T)
-)
+  (vlax-dump-object vla_object T))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-vlasel)</SUBR>
@@ -104,8 +90,7 @@
 ;;; <RET>vla-object</RET>
 ;;; </LISPDOC>
 (defun acad-vlasel () 
-  (vlax-ename->vla-object (car (entsel)))
-)
+  (vlax-ename->vla-object (car (entsel))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-entsel)</SUBR>
@@ -113,8 +98,7 @@
 ;;; <RET>entity</RET>
 ;;; </LISPDOC>
 (defun acad-entsel () 
-  (car (entsel))
-)
+  (car (entsel)))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-ent2vla entity)</SUBR>
@@ -123,8 +107,7 @@
 ;;; <RET>vla-object</RET>
 ;;; </LISPDOC>
 (defun acad-ent2vla (entity) 
-  (vlax-ename->vla-object entity)
-)
+  (vlax-ename->vla-object entity))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-selset-onscreen etype)</SUBR>
@@ -137,15 +120,11 @@
   (vla-selectonscreen sel 
                       (vlax-safearray-fill 
                         (vlax-make-safearray vlax-vbinteger '(0 . 0))
-                        '(0)
-                      )
+                        '(0))
                       (vlax-safearray-fill 
                         (vlax-make-safearray vlax-vbvariant '(0 . 0))
-                        (list etype)
-                      )
-  )
-  sel
-)
+                        (list etype)))
+  sel)
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-selset-universal)</SUBR>
@@ -155,10 +134,8 @@
 ;;; </LISPDOC>
 (defun acad-selset-universal (/ selset) 
   (if (not (setq selset (cadr (ssgetfirst)))) 
-    (setq selset (ssget))
-  )
-  selset
-)
+    (setq selset (ssget)))
+  selset)
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-ent-boundingbox entity)</SUBR>
@@ -168,18 +145,13 @@
 ;;; </LISPDOC>
 (defun acad-ent-boundingbox (entity / minp maxp) 
   (if (= 'ENAME (type entity)) 
-    (setq entity (acad-ent2vla entity))
-  )
+    (setq entity (acad-ent2vla entity)))
   (if (= 'VLA-OBJECT (type entity)) 
-    (vla-GetBoundingBox entity 'minp 'maxp)
-  )
+    (vla-GetBoundingBox entity 'minp 'maxp))
   (if (and minp maxp) 
     (list 
       (vlax-safearray->list minp)
-      (vlax-safearray->list maxp)
-    )
-  )
-)
+      (vlax-safearray->list maxp))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-selset-boundingbox sel)</SUBR>
@@ -192,13 +164,9 @@
             sel
             (vla-GetBoundingBox item 'minp 'maxp)
             (setq minlst (cons (vlax-safearray->list minp) minlst)
-                  maxlst (cons (vlax-safearray->list maxp) maxlst)
-            )
-  )
+                  maxlst (cons (vlax-safearray->list maxp) maxlst)))
   (list (apply 'mapcar (cons 'min minlst)) 
-        (apply 'mapcar (cons 'max maxlst))
-  )
-)
+        (apply 'mapcar (cons 'max maxlst))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-list-boundingbox entlist)</SUBR>
@@ -210,13 +178,9 @@
   (foreach item entlist 
     (setq boxlst (acad-ent-boundingbox item))
     (setq minlst (cons (car boxlst) minlst)
-          maxlst (cons (cadr boxlst) maxlst)
-    )
-  )
+          maxlst (cons (cadr boxlst) maxlst)))
   (list (apply 'mapcar (cons 'min minlst)) 
-        (apply 'mapcar (cons 'max maxlst))
-  )
-)
+        (apply 'mapcar (cons 'max maxlst))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-boundingbox-blc clist)</SUBR>
@@ -225,8 +189,7 @@
 ;;; <RET>List of coordinates</RET>
 ;;; </LISPDOC>
 (defun acad-boundingbox-blc (clist /) 
-  (car clist)
-)
+  (car clist))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-boundingbox-ulc clist)</SUBR>
@@ -235,8 +198,7 @@
 ;;; <RET>List of coordinates</RET>
 ;;; </LISPDOC>
 (defun acad-boundingbox-ulc (clist /) 
-  (list (caar clist) (cadadr clist) (last (car clist)))
-)
+  (list (caar clist) (cadadr clist) (last (car clist))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-boundingbox-urc clist)</SUBR>
@@ -245,8 +207,7 @@
 ;;; <RET>List of coordinates</RET>
 ;;; </LISPDOC>
 (defun acad-boundingbox-urc (clist /) 
-  (cadr clist)
-)
+  (cadr clist))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-boundingbox-brc clist)</SUBR>
@@ -255,8 +216,7 @@
 ;;; <RET>List of coordinates</RET>
 ;;; </LISPDOC>
 (defun acad-boundingbox-brc (clist /) 
-  (list (caadr clist) (cadar clist) (last (car clist)))
-)
+  (list (caadr clist) (cadar clist) (last (car clist))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-ent-get-layer ent)</SUBR>
@@ -266,9 +226,7 @@
 ;;; </LISPDOC>
 (defun acad-ent-get-layer (ent /) 
   (if (= 'ENAME (type ent)) 
-    (tblobjname "LAYER" (cdr (assoc 8 (entget ent))))
-  )
-)
+    (tblobjname "LAYER" (cdr (assoc 8 (entget ent))))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-ent-get-color ent)</SUBR>
@@ -282,11 +240,7 @@
       (setq color (cdr (assoc 62 (entget ent))))
       (if (or (null color) (zerop color)) 
         (setq color (acad-ent-get-color (acad-ent-get-layer ent)))
-        color
-      )
-    )
-  )
-)
+        color))))
        
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-ent-get-ltype ent)</SUBR>
@@ -300,11 +254,7 @@
       (setq lt (cdr (assoc 6 (entget ent))))
       (if (or (null lt) (= "ByBlock" lt)) 
         (setq lt (acad-ent-get-ltype (acad-ent-get-layer ent)))
-        lt
-      )
-    )
-  )
-)
+        lt))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(acad-ent-get-lweight ent)</SUBR>
@@ -318,16 +268,10 @@
       (setq lw (cdr (assoc 370 (entget ent))))
       (cond 
         ((null lw)
-         (setq lw (acad-ent-get-lweight (acad-ent-get-layer ent)))
-        )
+         (setq lw (acad-ent-get-lweight (acad-ent-get-layer ent))))
         ((= -3 lw)
-         (setq lw 25)
-        )
-        (t lw)
-      )
-    )
-  )
-)
+         (setq lw 25))
+        (t lw)))))
 
 ;;;<LISPDOC>
 ;;;<SUBR>(acad-objectid vlent)</SUBR>
@@ -339,11 +283,7 @@
   (if (= (type vlent) 'VLA-OBJECT) 
     (vlax-get-property vlent 
                        (strcat "ObjectId" 
-                               (if (system-is-x64) "32" "")
-                       )
-    )
-  )
-)
+                               (if (system-is-x64) "32" "")))))
 
 ;;;<LISPDOC>
 ;;;<SUBR>(acad-ownerid vlent)</SUBR>
@@ -355,11 +295,7 @@
   (if (= (type vlent) 'VLA-OBJECT) 
     (vlax-get-property vlent 
                        (strcat "OwnerId" 
-                               (if (system-is-x64) "32" "")
-                       )
-    )
-  )
-)
+                               (if (system-is-x64) "32" "")))))
 
 ;;;<LISPDOC>
 ;;;<SUBR>(acad-objectidtoobject doc id)</SUBR>
@@ -371,11 +307,8 @@
 (defun acad-objectidtoobject (doc id) 
   (vlax-invoke doc 
                (strcat "ObjectIDToObject" 
-                       (if (system-is-x64) "32" "")
-               )
-               id
-  )
-)
+                       (if (system-is-x64) "32" ""))
+               id))
 
 ;;;<LISPDOC>
 ;;;<SUBR>(acad-tablelist-ent table)</SUBR>
@@ -385,10 +318,8 @@
 ;;;</LISPDOC>
 (defun acad-tablelist-ent (table / ent lst) 
   (while (setq ent (tblnext table (null ent))) 
-    (setq lst (cons (tblobjname table (cdr (assoc 2 ent))) lst))
-  )
-  (reverse lst)
-)
+    (setq lst (cons (tblobjname table (cdr (assoc 2 ent))) lst)))
+  (reverse lst))
 
 ;;;<LISPDOC>
 ;;;<SUBR>(acad-tablelist-name table)</SUBR>
@@ -398,10 +329,8 @@
 ;;;</LISPDOC>
 (defun acad-tablelist-name (table / ent lst) 
   (while (setq ent (tblnext table (null ent))) 
-    (setq lst (cons (cdr (assoc 2 ent)) lst))
-  )
-  (reverse lst)
-)
+    (setq lst (cons (cdr (assoc 2 ent)) lst)))
+  (reverse lst))
 
 ;;;<LISPDOC>
 ;;;<SUBR>(acad-tablelist-cons table)</SUBR>
@@ -412,9 +341,5 @@
 (defun acad-tablelist-cons (table / ent lst name) 
   (while (setq ent (tblnext table (null ent))) 
     (setq lst (cons (cons (setq name (cdr (assoc 2 ent))) (tblobjname table name)) 
-                    lst
-              )
-    )
-  )
-  (reverse lst)
-)
+                    lst)))
+  (reverse lst))

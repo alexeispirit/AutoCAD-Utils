@@ -12,9 +12,9 @@
 ;;;<ARG>finally - subroutines to execute anyway</ARG>
 ;;;<RET>test subr result or catch result</RET>
 ;;;</LISPDOC>
-(defun error-try (test catch finally / res)
+(defun error-try (test catch finally / res) 
   (setq res (vl-catch-all-apply test))
-  (apply finally (list ))
-  (if (and (vl-catch-all-error-p res) catch)
+  (apply finally (list))
+  (if (and (vl-catch-all-error-p res) catch) 
     (apply catch (list (vl-catch-all-error-message res)))
     res))

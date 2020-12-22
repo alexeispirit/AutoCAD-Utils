@@ -7,5 +7,6 @@
 ;;; <ARG>pwd - password</ARG>
 ;;; <RET>MSSQL Server connection string</RET>
 ;;; </LISPDOC>
-(defun sql-mssql-connection-string (server, db, login, pwd)
-  (strcat "Provider=SQLOLEDB;Driver={SQL Server};Server=" server ";Database=" db ";UID=" login ";PWD=" pwd))
+(defun sql-mssql-connection-string (server, db, login, pwd) 
+  (strcat "Provider=SQLOLEDB;Driver={SQL Server};Server=" server ";Database=" db 
+          ";UID=" login ";PWD=" pwd))

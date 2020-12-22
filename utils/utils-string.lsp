@@ -7,7 +7,7 @@
 ;;; <ARG>str - string to clear</ARG>
 ;;; <RET>cleared string</RET>
 ;;; </LISPDOC>
-(defun string-remove-pattern (regexp_object pattern str)
+(defun string-remove-pattern (regexp_object pattern str) 
   (regexp-replace regexp_object pattern "" str T nil))
 
 ;;; <LISPDOC>
@@ -15,22 +15,22 @@
 ;;; <DESC>List of MText format symbols</DESC>
 ;;; <RET>list of MText string format symbols</RET>
 ;;; </LISPDOC>
-(defun string-format-list ()
-  (list
-    (list "Alignment" 	"\\\\A[012];")
-    (list "Tabs"	"\\t")
-    (list "Color"	"\\\\[Cc][0-9]?[.]?[0-9]+;")
-    (list "Font"	"\\\\[Ff].*?;")
-    (list "Height"	"\\\\H[0-9]?[.]?[0-9]+x;")
-    (list "Linefeed"	"^\\P| \\\\P|\\\\P |\\\\P")
-    (list "Slashl"	"\\\\l")
-    (list "Overline"	"\\\\[Oo]")
-    (list "Paragraph"	"\\\\p.*?;")
-    (list "Oblique"	"\\\\Q[-]?[0-9]*?[.]?[0-9]+;")
-    (list "Stacking"	"\\\\S.*?\\;")
-    (list "Tracking"	"\\\\T[0-9]?[.]?[0-9]+;")
-    (list "Width"	"\\\\W[0-9]?[.]?[0-9]+;")
-    (list "Braces"	"[{}]")))
+(defun string-format-list () 
+  (list 
+    (list "Alignment" "\\\\A[012];")
+    (list "Tabs" "\\t")
+    (list "Color" "\\\\[Cc][0-9]?[.]?[0-9]+;")
+    (list "Font" "\\\\[Ff].*?;")
+    (list "Height" "\\\\H[0-9]?[.]?[0-9]+x;")
+    (list "Linefeed" "^\\P| \\\\P|\\\\P |\\\\P")
+    (list "Slashl" "\\\\l")
+    (list "Overline" "\\\\[Oo]")
+    (list "Paragraph" "\\\\p.*?;")
+    (list "Oblique" "\\\\Q[-]?[0-9]*?[.]?[0-9]+;")
+    (list "Stacking" "\\\\S.*?\\;")
+    (list "Tracking" "\\\\T[0-9]?[.]?[0-9]+;")
+    (list "Width" "\\\\W[0-9]?[.]?[0-9]+;")
+    (list "Braces" "[{}]")))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(string-remove-format regexp str)</SUBR>
@@ -39,8 +39,8 @@
 ;;; <ARG>str - MText string to clear</ARG>
 ;;; <RET>cleared string</RET>
 ;;; </LISPDOC>
-(defun string-remove-format (regexp_object str / )
-  (foreach item (string-format-list)
+(defun string-remove-format (regexp_object str /) 
+  (foreach item (string-format-list) 
     (setq str (string-remove-pattern regexp_object (cadr item) str)))
   str)
 
@@ -50,8 +50,8 @@
 ;;; <ARG>str - string to test</ARG>
 ;;; <RET>T - if empty \ nil - otherwise</RET>
 ;;; </LISPDOC>
-(defun string-is-null-or-empty (str / )
-  (if (or (not str) (= str "") (= str " "))
+(defun string-is-null-or-empty (str /) 
+  (if (or (not str) (= str "") (= str " ")) 
     T
     nil))
 
@@ -61,8 +61,8 @@
 ;;; <ARG>str - string to test</ARG>
 ;;; <RET>T - if comment \ nil - otherwise</RET>
 ;;; </LISPDOC>
-(defun string-is-a-comment (str / )
-  (if (= ";" (substr str 1 1))
+(defun string-is-a-comment (str /) 
+  (if (= ";" (substr str 1 1)) 
     T
     nil))
 
@@ -73,12 +73,12 @@
 ;;; <ARG>splitter - delimiter</ARG>
 ;;; <RET>list of splitted strings</RET>
 ;;; </LISPDOC>
-(defun string-split-to-list (str splitter / i)
-  (cond
+(defun string-split-to-list (str splitter / i) 
+  (cond 
     ((= str "") nil)
     ((setq i (vl-string-search splitter str))
-     (cons (substr str 1 i)
-	   (string-split-to-list (substr str (+ (strlen splitter) 1 i)) splitter)))
+     (cons (substr str 1 i) 
+           (string-split-to-list (substr str (+ (strlen splitter) 1 i)) splitter)))
     (t (list str))))
 
 ;;; <LISPDOC>
@@ -89,12 +89,12 @@
 ;;; <RET>list of splitted strings if list has 2 elements \
 ;;; nil otherwise</RET>
 ;;; </LISPDOC>
-(defun string-make-pair (str / pair number index)
-  (setq pair (string-split-to-list str " ")
-	number (car (reverse pair))
-	index (list-join-to-string (reverse (cdr (reverse pair))) " ")
-	pair (list index number))  
-  (if (= 2 (length pair))
+(defun string-make-pair (str / pair number index) 
+  (setq pair   (string-split-to-list str " ")
+        number (car (reverse pair))
+        index  (list-join-to-string (reverse (cdr (reverse pair))) " ")
+        pair   (list index number))
+  (if (= 2 (length pair)) 
     pair
     nil))
 
@@ -105,11 +105,10 @@
 ;;; <ARG>rule - rule from whitelist to apply</ARG>
 ;;; <RET>cleared string</RET>
 ;;; </LISPDOC>
-(defun string-remove-with-whitelist-rule (str rule / i)
-  (if (setq i (vl-string-search rule str))
+(defun string-remove-with-whitelist-rule (str rule / i) 
+  (if (setq i (vl-string-search rule str)) 
     (substr str (1+ i) (strlen str))
     str))
-
 
 ;;; <LISPDOC>
 ;;; <SUBR>(string-remove-with-whitelist-total str whitelist)</SUBR>
@@ -118,9 +117,9 @@
 ;;; <ARG>whitelist - whitelist to apply</ARG>
 ;;; <RET>cleared string</RET>
 ;;; </LISPDOC>
-(defun string-remove-with-whitelist-total (str whitelist)
-  (if whitelist
-    (foreach rule whitelist
+(defun string-remove-with-whitelist-total (str whitelist) 
+  (if whitelist 
+    (foreach rule whitelist 
       (setq str (string-remove-with-whitelist-rule str rule))))
   str)
 
@@ -130,7 +129,7 @@
 ;;; <ARG>str - string to search in</ARG>
 ;;; <RET>reversed string</RET>
 ;;; </LISPDOC>
-(defun string-reverse (str)
+(defun string-reverse (str) 
   (vl-list->string (reverse (vl-string->list str))))
     
 ;;; <LISPDOC>
@@ -140,14 +139,13 @@
 ;;; <ARG>str - string to search in</ARG>
 ;;; <RET>item index or nil</RET>
 ;;; </LISPDOC>
-(defun string-search-reverse (search str / index)
+(defun string-search-reverse (search str / index) 
   (setq index (vl-string-search (string-reverse search) (string-reverse str)))
-  (if index
-    (- (strlen str)
+  (if index 
+    (- (strlen str) 
        index
        (strlen search))
     nil))
-
 
 ;;; <LISPDOC>
 ;;; <SUBR>(string-search item str)</SUBR>
@@ -156,7 +154,7 @@
 ;;; <ARG>str - string to search in</ARG>
 ;;; <RET>item index or nil</RET>
 ;;; </LISPDOC>
-(defun string-search (item str)
+(defun string-search (item str) 
   (vl-string-search item str))
 
 ;;; <LISPDOC>
@@ -166,13 +164,13 @@
 ;;; <ARG>str - string to search in</ARG>
 ;;; <RET>entry counts or nil</RET>
 ;;; </LISPDOC>
-(defun string-contains (search str / cnt index)
+(defun string-contains (search str / cnt index) 
   (setq cnt 0)
-  (if (= (type str) (type search) 'STR)
-    (while (setq index (vl-string-search search str))
+  (if (= (type str) (type search) 'STR) 
+    (while (setq index (vl-string-search search str)) 
       (setq str (substr str (+ index (strlen search)) (- (strlen str) index)))
       (setq cnt (1+ cnt))))
-  (if (/= cnt 0)
+  (if (/= cnt 0) 
     cnt
     nil))
   
@@ -184,7 +182,7 @@
 ;;; <ARG>str - string to search in</ARG>
 ;;; <RET>new string</RET>
 ;;; </LISPDOC>
-(defun string-regexp-replace-fast (pattern replacer str)
+(defun string-regexp-replace-fast (pattern replacer str) 
   (regexp-replace (regexp-regapp) pattern replacer str T nil))
 
 ;;; <LISPDOC>
@@ -194,11 +192,15 @@
 ;;; <ARG>str - string to search in</ARG>
 ;;; <RET>new string</RET>
 ;;; </LISPDOC>
-(defun string-trim-symbols (pattern str)
-  (if str
-    (regexp-replace (regexp-regapp) (strcat "^" pattern) ""
+(defun string-trim-symbols (pattern str) 
+  (if str 
+    (regexp-replace 
+      (regexp-regapp)
+      (strcat "^" pattern)
+      ""
       (regexp-replace (regexp-regapp) (strcat pattern "$") "" str T nil)
-      T nil)))
+      T
+      nil)))
 
 ;;; <LISPDOC>
 ;;; <SUBR>string-regexp-increment (re search str value)</SUBR>
@@ -209,21 +211,28 @@
 ;;; <ARG>value - increment</ARG>
 ;;; <RET>new string</RET>
 ;;; </LISPDOC>	  
-(defun string-regexp-increment (re search str value / olist nlist)
+(defun string-regexp-increment (re search str value / olist nlist) 
   (setq olist (reverse (regexp-execute re search str T nil))
-	nlist (mapcar
-		(function (lambda (x y)
-			    (vl-string-subst (itoa y) (car (regexp-execute-to-plain-list re "\\d+" (car x))) (car x))))
-		olist
-		(list-xrange value (+ (length olist) value) 1)))
+        nlist (mapcar 
+                (function 
+                  (lambda (x y) 
+                    (vl-string-subst (itoa y) 
+                                     (car 
+                                       (regexp-execute-to-plain-list 
+                                         re
+                                         "\\d+"
+                                         (car x)))
+                                     (car x))))
+                olist
+                (list-xrange value (+ (length olist) value) 1)))
   (setq cnt 0)
-  (while olist
-    (setq cnt (+ (strlen (caar olist)) cnt)
-	  str (vl-string-subst
-		(car nlist)
-		(caar olist)
-		str
-		cnt)
-	  nlist (cdr nlist)
-	  olist (cdr olist)))
+  (while olist 
+    (setq cnt   (+ (strlen (caar olist)) cnt)
+          str   (vl-string-subst 
+                  (car nlist)
+                  (caar olist)
+                  str
+                  cnt)
+          nlist (cdr nlist)
+          olist (cdr olist)))
   str)
