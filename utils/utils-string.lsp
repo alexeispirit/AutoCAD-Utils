@@ -23,13 +23,14 @@
     (list "Font" "\\\\[Ff].*?;")
     (list "Height" "\\\\H[0-9]?[.]?[0-9]+x;")
     (list "Linefeed" "^\\P| \\\\P|\\\\P |\\\\P")
-    (list "Slashl" "\\\\l")
+    (list "Underline" "\\\\[Ll]")
     (list "Overline" "\\\\[Oo]")
     (list "Paragraph" "\\\\p.*?;")
     (list "Oblique" "\\\\Q[-]?[0-9]*?[.]?[0-9]+;")
     (list "Stacking" "\\\\S.*?\\;")
     (list "Tracking" "\\\\T[0-9]?[.]?[0-9]+;")
     (list "Width" "\\\\W[0-9]?[.]?[0-9]+;")
+	(list "StrikeThrough" "\\\\[Kk]")
     (list "Braces" "[{}]")))
 
 ;;; <LISPDOC>

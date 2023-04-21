@@ -205,4 +205,33 @@
       (setq out (subst (append (assoc (car first) out) (list (cadr first))) 
                        (assoc (car first) out)
                        out))))
-  out)	
+  out)
+
+;;; <LISPDOC>
+;;; <SUBR>(list-swap-values lst fi si)</SUBR>
+;;; <DESC>Swap list elements by indices</DESC>
+;;; <ARG>lst - list to swap elements</ARG>
+;;; <ARG>fi - first index</ARG>
+;;; <ARG>si - second index</ARG>
+;;; <RET>Swapped list</RET>
+;;; </LISPDOC>
+(defun list-swap-values (lst fi si / output_lst fe se)
+  (if (and (>= fi 0) (< fi (length lst)))
+    (setq fe (nth fi lst))
+    (setq fi -1))
+
+  (if (and (>= si 0) (< si (length lst)))
+    (setq se (nth si lst))
+    (setq si -1))
+
+  (setq k 0)
+  
+  (foreach item lst
+    (setq output_lst
+           (cond
+             ((= k fi) (append output_lst (list se)))
+             ((= k si) (append output_lst (list fe)))
+             (T (append output_lst (list item)))))
+    (setq k (1+ k)))
+  output_lst)
+  

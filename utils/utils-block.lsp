@@ -10,3 +10,15 @@
     (if (setq value (assoc (vlax-get item 'PropertyName) vlist)) 
       (if (= (vlax-get item 'ReadOnly) 0) 
         (vlax-put item 'Value (cdr value))))))
+        
+(defun block-set-all-explodable ( / )
+  (vlax-for item (vla-get-blocks (acad-actdoc))
+    (vla-put-explodable item :vlax-true)))
+
+(defun block-get-attribute-value (blk attrname / atts)
+  (setq atts (vlax-invoke blk 'getAttributes))
+  (setq atts (vl-remove-if-not (function (lambda (x) (= (vla-get-TagString x) attrname))) atts))
+  (if atts
+    (vla-get-textstring (car atts))
+    nil)
+  )
