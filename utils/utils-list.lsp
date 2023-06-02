@@ -26,7 +26,18 @@
     (cons (car lst) (list-remove-duplicates (vl-remove (car lst) lst)))))
 
 ;;; <LISPDOC>
-;;; <
+;;; <SUBR>(list-remove-duplicates-prec lst prec)</SUBR>
+;;; <DESC>Remove duplicates from list with precision</DESC>
+;;; <ARG>lst - list to proceed</ARG>
+;;; <ARG>prec - precision</ARG>
+;;; <RET>cleared list</RET>
+;;; </LISPDOC>
+(defun list-remove-duplicates-prec (lst prec) 
+  (if lst 
+    (cons (car lst) 
+      (list-remove-duplicates-prec
+        (vl-remove-if 
+          (function (lambda (x) (equal (car lst) x prec))) lst) prec))))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(list-union list1 list2)</SUBR>
@@ -234,4 +245,14 @@
              (T (append output_lst (list item)))))
     (setq k (1+ k)))
   output_lst)
-  
+
+;;; <LISPDOC>
+;;; <SUBR>(list-pair-distance lst)</SUBR>
+;;; <DESC>Calculates distance between list members</DESC>
+;;; <ARG>lst - list to proceed</ARG>
+;;; <RET>list of calculated distace</RET>
+;;; </LISPDOC>
+(defun list-pair-distance (lst)
+  (if (and lst (> (length lst) 1))
+    (cons (- (car lst) (cadr lst))
+      (list-pair-distance (cdr lst)))))

@@ -15,3 +15,13 @@
 ;;; </LISPDOC>
 (defun math-radians-degrees (angle) 
   (* 180.0 (/ angle pi)))
+
+;;; <LISPDOC>
+;;; <SUBR>(math-avg lst)</SUBR>
+;;; <DESC>Calculate average value</DESC>
+;;; <ARG>lst - list of numbers</ARG>
+;;; <RET>Average value</RET>
+;;; </LISPDOC>
+(defun math-avg (lst)
+  (if lst
+    (/ (apply '+ lst) (length lst))))

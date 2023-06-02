@@ -72,7 +72,7 @@
 ;;; <RET>List of found strings ((String Index Length)...)</RET>
 ;;; </LISPDOC>
 (defun regexp-execute (regexp_object pattern test_string is_global case_sensitive / 
-                       result collection
+                       result subresult collection
                       ) 
   (if regexp_object 
     (progn 
@@ -90,6 +90,8 @@
                              (vlax-get item 'Value)
                              (vlax-get item 'FirstIndex)
                              (vlax-get item 'Length)
+							 (vlax-for subitem (vlax-get item 'Submatches)
+								(setq subresult (cons subitem subresult)))
                            )
                            result
                          )
