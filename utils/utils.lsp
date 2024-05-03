@@ -11,6 +11,7 @@
                                  "utils-reactor.lsp" "utils-math.lsp" "utils-linetype.lsp" 
                                  "utils-editor.lsp" "utils-layer.lsp" "utils-prosteel.lsp" 
                                  "utils-entity.lsp" "utils-block.lsp" "utils-sset.lsp" "utils-dict.lsp"
+				 "utils-matrix.lsp"
                            )
   )
 
