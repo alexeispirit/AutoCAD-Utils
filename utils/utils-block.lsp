@@ -22,6 +22,14 @@
     (vla-get-textstring (car atts))
     nil)
   )
+
+(defun block-set-attribute-value (blk attrname value / atts)
+  (setq atts (vlax-invoke blk 'getAttributes))
+  (setq atts (vl-remove-if-not (function (lambda (x) (= (vla-get-TagString x) attrname))) atts))
+  (if atts
+    (vla-put-textstring (car atts) value)
+    nil)
+  )
   
 (defun block-get-attributelist (vlablk / )
   (mapcar (function (lambda (x) (vlax-get x 'TagString))) (vlax-invoke (vlax-ename->vla-object vlablk) 'GetAttributes)))
