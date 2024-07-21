@@ -237,3 +237,29 @@
           nlist (cdr nlist)
           olist (cdr olist)))
   str)
+
+;;; <LISPDOC>
+;;; <SUBR>string-pad-left (str char len)</SUBR>
+;;; <DESC>Left pad string with given character</DESC>
+;;; <ARG>str - string</ARG>
+;;; <ARG>char - character</ARG>
+;;; <ARG>len - required string length</ARG>
+;;; <RET>new string</RET>
+;;; </LISPDOC>	
+(defun string-pad-left (str char len)
+  (while (< (strlen str) len)
+    (setq str (strcat char str)))
+  str)
+
+;;; <LISPDOC>
+;;; <SUBR>string-pad-right (str char len)</SUBR>
+;;; <DESC>Right pad string with given character</DESC>
+;;; <ARG>str - string</ARG>
+;;; <ARG>char - character</ARG>
+;;; <ARG>len - required string length</ARG>
+;;; <RET>new string</RET>
+;;; </LISPDOC>	
+(defun string-pad-right (str char len)
+  (while (< (strlen str) len)
+    (setq str (strcat str char)))
+  str)
