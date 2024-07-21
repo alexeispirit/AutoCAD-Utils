@@ -22,3 +22,6 @@
     (vla-get-textstring (car atts))
     nil)
   )
+  
+(defun block-get-attributelist (vlablk / )
+  (mapcar (function (lambda (x) (vlax-get x 'TagString))) (vlax-invoke (vlax-ename->vla-object vlablk) 'GetAttributes)))
