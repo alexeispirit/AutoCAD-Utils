@@ -168,8 +168,8 @@
 (defun string-contains (search str / cnt index) 
   (setq cnt 0)
   (if (= (type str) (type search) 'STR) 
-    (while (setq index (vl-string-search search str)) 
-      (setq str (substr str (+ index (strlen search)) (- (strlen str) index)))
+    (while (setq index (vl-string-search search str))
+      (setq str (substr str (+ index (strlen search) 1) (- (strlen str) index 1)))
       (setq cnt (1+ cnt))))
   (if (/= cnt 0) 
     cnt
