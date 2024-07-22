@@ -1,5 +1,5 @@
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-remove-rowcol)</SUBR>
+;;; <SUBR>(matrix-remove-rowcol mat size row col)</SUBR>
 ;;; <DESC>Removes given row and column from given matrix</DESC>
 ;;; <ARG>mat - matrix</ARG>
 ;;; <ARG>size - size of matrix</ARG>
@@ -24,7 +24,7 @@
   newmat)
   
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-determinant)</SUBR>
+;;; <SUBR>(matrix-determinant mat size)</SUBR>
 ;;; <DESC>Calculates determinant of square matrix</DESC>
 ;;; <ARG>mat - square matrix</ARG>
 ;;; <ARG>size - size of matrix</ARG>
@@ -50,7 +50,7 @@
       det)))
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-replace-col)</SUBR>
+;;; <SUBR>(matrix-replace-col mat size col values)</SUBR>
 ;;; <DESC>Replaces column of matrix with given values</DESC>
 ;;; <ARG>mat - square matrix</ARG>
 ;;; <ARG>size - size of matrix</ARG>
@@ -75,7 +75,7 @@
     newmat)))
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-from-list)</SUBR>
+;;; <SUBR>(matrix-from-list lst size)</SUBR>
 ;;; <DESC>Generates square matrix from given list</DESC>
 ;;; <ARG>lst - list of values</ARG>
 ;;; <ARG>size - size of new matrix</ARG>
@@ -92,7 +92,7 @@
   newlst)
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-to-list)</SUBR>
+;;; <SUBR>(matrix-to-list mat)</SUBR>
 ;;; <DESC>Generate square matrix from given list</DESC>
 ;;; <ARG>mat - matrix</ARG>
 ;;; <RET>Plain list</RET>
@@ -101,7 +101,7 @@
   (apply 'append mat))
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-multiply-matrix)</SUBR>
+;;; <SUBR>(matrix-multiply-matrix a b)</SUBR>
 ;;; <DESC>Performs matrix on matrix multiplication</DESC>
 ;;; <ARG>a - matrix 1</ARG>
 ;;; <ARG>b - matrix 2</ARG>
@@ -123,7 +123,7 @@
 
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-multiply-scalar)</SUBR>
+;;; <SUBR>(matrix-multiply-scalar mat k)</SUBR>
 ;;; <DESC>Performs matrix on scalar multiplication</DESC>
 ;;; <ARG>mat - matrix</ARG>
 ;;; <ARG>k - number</ARG>
@@ -144,7 +144,7 @@
   newmat)
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-transpose)</SUBR>
+;;; <SUBR>(matrix-transpose mat)</SUBR>
 ;;; <DESC>Transposes matrix</DESC>
 ;;; <ARG>mat - matrix</ARG>
 ;;; <RET>Transposed matrix</RET>
@@ -157,7 +157,7 @@
   newmat)
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-complement)</SUBR>
+;;; <SUBR>(matrix-complement mat size row col)</SUBR>
 ;;; <DESC>Calculates matrix complement for given element</DESC>
 ;;; <ARG>mat - matrix</ARG>
 ;;; <ARG>size - size of matrix</ARG>
@@ -169,7 +169,7 @@
   (* (expt -1 (+ row col)) (matrix-determinant (matrix-remove-rowcol mat size row col) (1- size))))
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-union)</SUBR>
+;;; <SUBR>(matrix-union mat size)</SUBR>
 ;;; <DESC>Calculates union matrix</DESC>
 ;;; <ARG>mat - matrix</ARG>
 ;;; <ARG>size - size of matrix</ARG>
@@ -189,7 +189,7 @@
   newmat)
 
 ;;; <LISPDOC>
-;;; <SUBR>(matrix-inverse)</SUBR>
+;;; <SUBR>(matrix-inverse mat size)</SUBR>
 ;;; <DESC>Calculates inverse matrix</DESC>
 ;;; <ARG>mat - matrix</ARG>
 ;;; <ARG>size - size of matrix</ARG>

@@ -1,5 +1,5 @@
 ;;; <LISPDOC>
-;;; <SUBR>(vector-multiply-number)</SUBR>
+;;; <SUBR>(vector-multiply-number vec k)</SUBR>
 ;;; <DESC>Multiplies vector by given number</DESC>
 ;;; <ARG>vec - vector</ARG>
 ;;; <ARG>k - number</ARG>
@@ -9,7 +9,7 @@
   (mapcar '(lambda (x) (* x k)) vec))
 
 ;;; <LISPDOC>
-;;; <SUBR>(vector-scalar-product)</SUBR>
+;;; <SUBR>(vector-scalar-product vec1 vec2)</SUBR>
 ;;; <DESC>Vector scalar product</DESC>
 ;;; <ARG>vec1 - vector 1</ARG>
 ;;; <ARG>vec2 - vector 2</ARG>
@@ -19,7 +19,7 @@
   (apply '+ (mapcar '* vec1 vec2)))
 
 ;;; <LISPDOC>
-;;; <SUBR>(vector-cross-product)</SUBR>
+;;; <SUBR>(vector-cross-product vec1 vec2)</SUBR>
 ;;; <DESC>Vector cross product</DESC>
 ;;; <ARG>vec1 - vector 1</ARG>
 ;;; <ARG>vec2 - vector 2</ARG>
@@ -32,7 +32,7 @@
     (- (* (car vec1) (cadr vec2)) (* (car vec2) (cadr vec1)))))
 
 ;;; <LISPDOC>
-;;; <SUBR>(vector-length)</SUBR>
+;;; <SUBR>(vector-length vec)</SUBR>
 ;;; <DESC>Calculates vector length</DESC>
 ;;; <ARG>vec - vector</ARG>
 ;;; <RET>Vector length</RET>
@@ -41,7 +41,7 @@
   (sqrt (apply '+ (mapcar '* vec vec))))
 
 ;;; <LISPDOC>
-;;; <SUBR>(vector-unit)</SUBR>
+;;; <SUBR>(vector-unit vec)</SUBR>
 ;;; <DESC>Calculates unit vector</DESC>
 ;;; <ARG>vec - vector</ARG>
 ;;; <RET>Unit vector</RET>
