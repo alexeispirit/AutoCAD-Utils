@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-entity.lsp
+# D:\src\AutoCAD-Utils\utils\utils-entity.lsp
 ## (entity-dxf-get code entity)
 Get provided dxf code information from entity
 * code - dxf code to retrieve

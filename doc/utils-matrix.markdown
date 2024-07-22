@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-matrix.lsp
+# D:\src\AutoCAD-Utils\utils\utils-matrix.lsp
 ## (matrix-remove-rowcol)
 Removes given row and column from given matrix
 * mat - matrix

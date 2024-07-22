@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-sset.lsp
+# D:\src\AutoCAD-Utils\utils\utils-sset.lsp
 ## (sset-join)
 Join 2 selection sets
 * ss1 - Selection set

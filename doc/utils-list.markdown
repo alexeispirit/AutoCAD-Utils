@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-list.lsp
+# D:\src\AutoCAD-Utils\utils\utils-list.lsp
 ## (list-join-to-string strlist splitter)
 Join list of strings into string
 * strlist - list of strings

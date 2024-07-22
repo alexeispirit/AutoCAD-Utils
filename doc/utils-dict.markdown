@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-dict.lsp
+# D:\src\AutoCAD-Utils\utils\utils-dict.lsp
 ## (dict-get-collection)
 Service subroutine to get document dictionaries collection
 * No arguments

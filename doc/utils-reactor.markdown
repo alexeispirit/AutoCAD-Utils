@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-reactor.lsp
+# D:\src\AutoCAD-Utils\utils\utils-reactor.lsp
 ## (reactor-set-on-command rcommand-list lambda-start lambda-end)
 Set reactor on specified command start and end
 * rcommand-list - commands to check

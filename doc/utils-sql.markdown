@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-sql.lsp
+# D:\src\AutoCAD-Utils\utils\utils-sql.lsp
 ## (sql-mssql-connection-string server db login pwd)
 Generates MSSQL DB connection string
 * server - server hostname to connect

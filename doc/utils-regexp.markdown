@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-regexp.lsp
+# D:\src\AutoCAD-Utils\utils\utils-regexp.lsp
 ## (regexp-regapp)
 Get VBScript.RegExp pointer
 * No arguments

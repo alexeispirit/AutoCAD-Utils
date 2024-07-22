@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-prosteel.lsp
+# D:\src\AutoCAD-Utils\utils\utils-prosteel.lsp
 ## (acad-dicts)
 AutoCAD ActiveDocument dictionaries collection
 * actdoc - AutoCAD ActiveDocument pointer

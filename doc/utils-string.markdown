@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-string.lsp
+# D:\src\AutoCAD-Utils\utils\utils-string.lsp
 ## (string-remove-pattern regexp_object pattern str)
 Remove pattern from string
 * pattern - pattern to remove
@@ -59,21 +59,33 @@ count substrings in string
 * search - item to look for
 * str - string to search in
 returns: entry counts or nil
-## string-regexp-replace-fast (pattern replacer str)
+## (string-regexp-replace-fast pattern replacer str)
 Replace regexp pattern with string. Autoregister application
 * pattern - regexp pattern
 * replacer - string replacement
 * str - string to search in
 returns: new string
-## string-trim-symbols (pattern str)
+## (string-trim-symbols pattern str)
 Trim symbols from string. Autoregister application
 * pattern - regexp pattern
 * str - string to search in
 returns: new string
-## string-regexp-increment (re search str value)
+## (string-regexp-increment re search str value)
 Replace numbers in string with starting value
 * re - regexp object
 * search - regexp pattern
 * str - string to search in
 * value - increment
+returns: new string
+## (string-pad-left str char len)
+Left pad string with given character
+* str - string
+* char - character
+* len - required string length
+returns: new string
+## (string-pad-right str char len)
+Right pad string with given character
+* str - string
+* char - character
+* len - required string length
 returns: new string

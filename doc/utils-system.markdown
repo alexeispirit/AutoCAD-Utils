@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-system.lsp
+# D:\src\AutoCAD-Utils\utils\utils-system.lsp
 ## (system-computer-name)
 Reveal computer name
 * No arguments

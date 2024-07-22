@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-math.lsp
+# D:\src\AutoCAD-Utils\utils\utils-math.lsp
 ## (math-degrees-radians angle)
 Convert degrees into radians
 * angle - angle in degrees

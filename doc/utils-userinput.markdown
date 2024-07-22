@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-userinput.lsp
+# D:\src\AutoCAD-Utils\utils\utils-userinput.lsp
 ## (userinput-getkword-extended title lst)
 Provides getkword functionality to list <br/> consists of various strings
 * title - title to ask user for input (string)

@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-projectwise.lsp
+# D:\src\AutoCAD-Utils\utils\utils-projectwise.lsp
 ## (projectwise-urn)
 Retrives projectwise document URN
 * No arguments

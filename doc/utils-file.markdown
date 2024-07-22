@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-file.lsp
+# D:\src\AutoCAD-Utils\utils\utils-file.lsp
 ## (file-info)
 Retrives file information
 * No arguments

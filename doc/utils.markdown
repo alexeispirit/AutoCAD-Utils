@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils.lsp
+# D:\src\AutoCAD-Utils\utils\utils.lsp
 ## (utils-load)
 Load lisp files in provided order. Add utils folder to your Support path
 * No arguments

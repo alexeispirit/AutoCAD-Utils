@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-linetype.lsp
+# D:\src\AutoCAD-Utils\utils\utils-linetype.lsp
 ## (linetype-filelist)
 Returns list of (form.shx lt1 lt2...)
 * No arguments

@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-acad.lsp
+# D:\src\AutoCAD-Utils\utils\utils-acad.lsp
 ## (acad-version)
 Retrives autocad version as float
 * No arguments

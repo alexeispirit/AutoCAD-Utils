@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-dbx.lsp
+# D:\src\AutoCAD-Utils\utils\utils-dbx.lsp
 ## (dbx-object)
 Get ObjectDBX object point
 * No arguments

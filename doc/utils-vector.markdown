@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-vector.lsp
+# D:\src\AutoCAD-Utils\utils\utils-vector.lsp
 ## (vector-multiply-number)
 Multiplies vector by given number
 * vec - vector

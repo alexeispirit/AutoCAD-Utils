@@ -1,4 +1,4 @@
-# d:/src/AutoCAD-Utils\utils\utils-geom.lsp
+# D:\src\AutoCAD-Utils\utils\utils-geom.lsp
 ## (geom-point-in-bbox pt ptlu ptrd)
 Detect point in bounding box
 * pt - point to test
