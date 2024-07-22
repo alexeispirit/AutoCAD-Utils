@@ -263,3 +263,17 @@
   (while (< (strlen str) len)
     (setq str (strcat str char)))
   str)
+  
+;;; <LISPDOC>
+;;; <SUBR>(string-replace search replace str)</SUBR>
+;;; <DESC>Replace search string in str with replace string</DESC>
+;;; <ARG>search - string to search</ARG>
+;;; <ARG>replace - string to replace</ARG>
+;;; <ARG>str - string to search in</ARG>
+;;; <RET>new string</RET>
+;;; </LISPDOC>
+(defun string-replace (search replace str / )
+  (while (vl-string-search search str)
+    (setq str (vl-string-subst replace search str))
+  );while
+);defun  
