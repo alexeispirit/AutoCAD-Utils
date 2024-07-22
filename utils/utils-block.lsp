@@ -1,4 +1,9 @@
-
+;;; <LISPDOC>
+;;; <SUBR>(block-ref-safe-reset ent)</SUBR>
+;;; <DESC>Resets block preserving dynamic properties</DESC>
+;;; <ARG>ent - vla or entity of block reference</ARG>
+;;; <RET>None</RET>
+;;; </LISPDOC>
 (defun block-ref-safe-reset (ent / vlist value) 
   (if (= (type ent) 'ENAME) 
     (setq ent (vlax-ename->vla-object ent)))
@@ -10,11 +15,23 @@
     (if (setq value (assoc (vlax-get item 'PropertyName) vlist)) 
       (if (= (vlax-get item 'ReadOnly) 0) 
         (vlax-put item 'Value (cdr value))))))
-        
+
+;;; <LISPDOC>
+;;; <SUBR>(block-set-all-explodable)</SUBR>
+;;; <DESC>Allows all blocks to be exploded</DESC>
+;;; <RET>None</RET>
+;;; </LISPDOC>
 (defun block-set-all-explodable ( / )
   (vlax-for item (vla-get-blocks (acad-actdoc))
     (vla-put-explodable item :vlax-true)))
 
+;;; <LISPDOC>
+;;; <SUBR>(block-get-attribute-value blk attrname)</SUBR>
+;;; <DESC>Get block attribute value</DESC>
+;;; <ARG>blk - vla block reference</ARG>
+;;; <ARG>attrname - attribute name</ARG>
+;;; <RET>given attribute value</RET>
+;;; </LISPDOC>
 (defun block-get-attribute-value (blk attrname / atts)
   (setq atts (vlax-invoke blk 'getAttributes))
   (setq atts (vl-remove-if-not (function (lambda (x) (= (vla-get-TagString x) attrname))) atts))
@@ -23,6 +40,14 @@
     nil)
   )
 
+;;; <LISPDOC>
+;;; <SUBR>(block-set-attribute-value blk attrname value)</SUBR>
+;;; <DESC>Set block attribute value</DESC>
+;;; <ARG>blk - vla block reference</ARG>
+;;; <ARG>attrname - attribute name</ARG>
+;;; <ARG>value - value to set</ARG>
+;;; <RET>given attribute value</RET>
+;;; </LISPDOC>
 (defun block-set-attribute-value (blk attrname value / atts)
   (setq atts (vlax-invoke blk 'getAttributes))
   (setq atts (vl-remove-if-not (function (lambda (x) (= (vla-get-TagString x) attrname))) atts))

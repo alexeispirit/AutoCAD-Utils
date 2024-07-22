@@ -176,7 +176,7 @@
     nil))
   
 ;;; <LISPDOC>
-;;; <SUBR>string-regexp-replace-fast (pattern replacer str)</SUBR>
+;;; <SUBR>(string-regexp-replace-fast pattern replacer str)</SUBR>
 ;;; <DESC>Replace regexp pattern with string. Autoregister application</DESC>
 ;;; <ARG>pattern - regexp pattern</ARG>
 ;;; <ARG>replacer - string replacement</ARG>
@@ -187,7 +187,7 @@
   (regexp-replace (regexp-regapp) pattern replacer str T nil))
 
 ;;; <LISPDOC>
-;;; <SUBR>string-trim-symbols (pattern str)</SUBR>
+;;; <SUBR>(string-trim-symbols pattern str)</SUBR>
 ;;; <DESC>Trim symbols from string. Autoregister application</DESC>
 ;;; <ARG>pattern - regexp pattern</ARG>
 ;;; <ARG>str - string to search in</ARG>
@@ -204,7 +204,7 @@
       nil)))
 
 ;;; <LISPDOC>
-;;; <SUBR>string-regexp-increment (re search str value)</SUBR>
+;;; <SUBR>(string-regexp-increment re search str value)</SUBR>
 ;;; <DESC>Replace numbers in string with starting value</DESC>
 ;;; <ARG>re - regexp object</ARG>
 ;;; <ARG>search - regexp pattern</ARG>
@@ -239,7 +239,7 @@
   str)
 
 ;;; <LISPDOC>
-;;; <SUBR>string-pad-left (str char len)</SUBR>
+;;; <SUBR>(string-pad-left str char len)</SUBR>
 ;;; <DESC>Left pad string with given character</DESC>
 ;;; <ARG>str - string</ARG>
 ;;; <ARG>char - character</ARG>
@@ -252,7 +252,7 @@
   str)
 
 ;;; <LISPDOC>
-;;; <SUBR>string-pad-right (str char len)</SUBR>
+;;; <SUBR>(string-pad-right str char len)</SUBR>
 ;;; <DESC>Right pad string with given character</DESC>
 ;;; <ARG>str - string</ARG>
 ;;; <ARG>char - character</ARG>
