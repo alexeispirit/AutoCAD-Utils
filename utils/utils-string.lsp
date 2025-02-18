@@ -18,6 +18,7 @@
 (defun string-format-list () 
   (list 
     (list "Alignment" "\\\\A[012];")
+    (list "AlignPara" "\\\\pxq[clr]?;")
     (list "Tabs" "\\t")
     (list "Color" "\\\\[Cc][0-9]?[.]?[0-9]+;")
     (list "Font" "\\\\[Ff].*?;")
@@ -31,7 +32,8 @@
     (list "Tracking" "\\\\T[0-9]?[.]?[0-9]+;")
     (list "Width" "\\\\W[0-9]?[.]?[0-9]+;")
 	(list "StrikeThrough" "\\\\[Kk]")
-    (list "Braces" "[{}]")))
+    (list "Braces" "[{}]")
+	))
 
 ;;; <LISPDOC>
 ;;; <SUBR>(string-remove-format regexp str)</SUBR>
